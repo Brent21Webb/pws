@@ -1,2 +1,2 @@
-# pws
-The code for my PWS, a school project
+# PWS code
+The code for my and my friend's PWS, a school project

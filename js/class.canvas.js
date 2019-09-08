@@ -5,6 +5,8 @@ class Canvas {
 		this.bg = bg;
 		this.canvas = elem;
 
+		this.segments = [];
+
 		this.__init();
 	} // constructor
 
@@ -54,6 +56,11 @@ class Canvas {
 	draw() {
 		drawBackground();
 		drawRoads();
+	}
+
+
+	appendSegment(s) {
+		this.segments.push(s);
 	}
 } // class Canvas
 

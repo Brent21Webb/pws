@@ -9,10 +9,11 @@ class Canvas {
 	} // constructor
 
 	__init() {
-		// Set dimensions
+		// Set dimensions and prevent blurry lines
 		this.ctx = this.canvas.getContext("2d");
 		this.ctx.width = this.canvas.width = this.width;
 		this.ctx.height = this.canvas.height = this.height;
+		this.ctx.translate(0.5, 0.5);
 		// Draw the background with grid
 		this.drawBackground(true);
 
@@ -30,15 +31,15 @@ class Canvas {
 			this.ctx.lineWidth = 1;
 			// Draw horizontal
 			for(var i = 40; i < this.width; i += 40) {
-				this.ctx.moveTo(0.5, i + 0.5);
-				this.ctx.lineTo(this.width, i + 0.5);
+				this.ctx.moveTo(0, i);
+				this.ctx.lineTo(this.width, i);
 				this.ctx.stroke();
 			}
 			// Draw vertical
 			for(var i = 40; i < this.height; i += 40) {
 				this.ctx.lineStyle = "#444";
-				this.ctx.moveTo(i + 0.5, 0.5);
-				this.ctx.lineTo(i + 0.5, this.height + 0.5);
+				this.ctx.moveTo(i, 0);
+				this.ctx.lineTo(i, this.height);
 				this.ctx.stroke();
 			}
 		} // grid

@@ -17,7 +17,7 @@ class Canvas {
 		this.ctx.height = this.canvas.height = this.height;
 		this.ctx.translate(0.5, 0.5);
 		// Draw the background with grid
-		this.drawBackground(true);
+		this.drawBackground(false);
 
 
 		// Set eventlistener for canvas click ==> select road

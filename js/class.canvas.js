@@ -15,7 +15,22 @@ class Canvas {
 		this.ctx.height = this.canvas.height = this.height;
 
 		// Colour the background
+		this.drawBackground();
+	} // __init()
+
+
+
+	drawBackground() {
 		this.ctx.fillStyle = this.bg;
 		this.ctx.fillRect(0, 0, this.width, this.height);
-	} // __init()
+	}
+
+	drawRoads() {
+		
+	}
+
+	draw() {
+		drawBackground();
+		drawRoads();
+	}
 } // class Canvas

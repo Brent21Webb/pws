@@ -27,9 +27,9 @@ class Canvas {
 		this.ctx.translate(-0.5, -0.5); // Reset translation to prevent white lines on the edges
 		this.ctx.fillStyle = this.bg;
 		this.ctx.fillRect(0, 0, this.width, this.height);
-		this.ctx.translate(0.5, 0.5); // Back to the normal translation 
+		this.ctx.translate(0.5, 0.5); // Back to the normal translation
 		if(grid) {
-			this.ctx.strokeStyle = "#444";
+			this.ctx.strokeStyle = "#555";
 			this.ctx.lineWidth = 1;
 			// Draw horizontal
 			for(var i = 40; i < this.width; i += 40) {

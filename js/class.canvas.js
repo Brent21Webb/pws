@@ -24,8 +24,10 @@ class Canvas {
 	} // __init()
 
 	drawBackground(grid) {
+		this.ctx.translate(-0.5, -0.5); // Reset translation to prevent white lines on the edges
 		this.ctx.fillStyle = this.bg;
 		this.ctx.fillRect(0, 0, this.width, this.height);
+		this.ctx.translate(0.5, 0.5); // Back to the normal translation 
 		if(grid) {
 			this.ctx.strokeStyle = "#444";
 			this.ctx.lineWidth = 1;

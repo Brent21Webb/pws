@@ -18,11 +18,14 @@ class Canvas {
 		this.ctx.translate(0.5, 0.5);
 		// Draw the background with grid
 		this.drawBackground(true);
-		// Set eventlistener for canvas click ==> Draw/select road
-		var TEMP = this;
-		this.canvas.addEventListener("click", function(e) {
-			Canvas.clicked(e.clientX, e.clientY, TEMP);
-		});
+
+
+		// Set eventlistener for canvas click ==> select road
+		// var TEMP = this;
+		// this.canvas.addEventListener("click", function(e) {
+		// 	Canvas.clicked(e.clientX, e.clientY, TEMP);
+		// });
+
 	} // __init()
 
 	drawBackground(grid) {
@@ -57,21 +60,14 @@ class Canvas {
 		drawBackground();
 		drawRoads();
 	}
-
-
-	appendSegment(s) {
-		this.segments.push(s);
-	}
 } // class Canvas
 
 
 
-Canvas.clicked = function(x, y, canvas) {
-	var newX = Math.round(x / 40);   newX = (newX >= 20 ? 19 : newX) || 1;
-	var newY = Math.round(y / 40);   newY = (newY >= 20 ? 19 : newY) || 1;
-
-	Segment.create(x, y, newX, newY, canvas);
-} // clicked
+// Canvas.clicked = function(x, y, canvas) {
+// 	var newX = Math.round(x / 40);   newX = (newX >= 20 ? 19 : newX) || 1;
+// 	var newY = Math.round(y / 40);   newY = (newY >= 20 ? 19 : newY) || 1;
+// } // clicked
 
 
 

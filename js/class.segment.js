@@ -6,6 +6,9 @@ class Segment {
 		this.speed = speed;
 		this.ns = isNorthSouth;
 		this.connected = connected;
+
+		this.sprite = new Image();
+		this.sprite.src = "sprites/road.png";
 		this.__init();
 	} // constructor
 
@@ -13,8 +16,8 @@ class Segment {
 		this.ID = Segment.ID++;
 	}
 
-	draw() {
-
+	draw(ctx) {
+		ctx.drawImage(this.sprite, 40, 40);
 	}
 } // class Segment
 

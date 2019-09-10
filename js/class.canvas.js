@@ -29,7 +29,7 @@ class Canvas {
 
 
 	update() {
-		this.drawBackground(true);
+		this.draw(true);
 
 		requestAnimationFrame(() => this.update());
 	}
@@ -65,8 +65,8 @@ class Canvas {
 		}
 	}
 
-	draw() {
-		drawBackground();
+	draw(grid) {
+		drawBackground(grid);
 		drawRoads();
 	}
 

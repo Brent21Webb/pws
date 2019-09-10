@@ -1,12 +1,13 @@
 class Segment {
-	//         Vector Vector Int    bool     IntArray (ID)
- 	constructor(begin, end, speed, isNorthSouth, connected) {
+	//         Vector Vector Int    bool     IntArray (ID) Canvas
+ 	constructor(begin, end, speed, isNorthSouth, connected, canvas) {
 		this.begin = begin;
 		this.end = end;
 		this.speed = speed;
 		this.ns = isNorthSouth;
 		this.connected = connected;
-
+		this.canvas = canvas;
+		
 		this.sprite = new Image();
 		this.sprite.src = "sprites/road.png";
 		this.__init();

@@ -30,7 +30,7 @@ class Canvas {
 
 	update() {
 		this.drawBackground(true);
-		console.log("I'm updating :)");
+
 		requestAnimationFrame(() => this.update());
 	}
 
@@ -66,6 +66,10 @@ class Canvas {
 	draw() {
 		drawBackground();
 		drawRoads();
+	}
+
+	addSegment(s) {
+		this.segments.push(s);
 	}
 } // class Canvas
 

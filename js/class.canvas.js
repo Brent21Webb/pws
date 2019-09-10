@@ -66,8 +66,8 @@ class Canvas {
 	}
 
 	draw(grid) {
-		drawBackground(grid);
-		drawRoads();
+		this.drawBackground(grid);
+		this.drawRoads();
 	}
 
 	addSegment(s) {

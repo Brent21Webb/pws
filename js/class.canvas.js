@@ -60,7 +60,9 @@ class Canvas {
 	} // drawBackground
 
 	drawRoads() {
-
+		for(var i in this.segments) {
+			this.segments[i].draw(this.ctx);
+		}
 	}
 
 	draw() {

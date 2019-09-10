@@ -19,7 +19,7 @@ class Segment {
 	}
 
 	draw(ctx) {
-		ctx.drawImage(this.sprite, 40, 40, 80, 80);
+		ctx.drawImage(this.sprite, 30, 30, 60, 60);
 	}
 } // class Segment
 

@@ -4,7 +4,7 @@ function geti(s) { // getElementById shortcut
 }
 
 // Make the canvas element
-var canvas = new Canvas(920, 920, "#77DD77", geti("map"));
+var canvas = new Canvas(920, 920, "#A2C969", geti("map"));
 
 // Make the segments and add them to the canvas
 

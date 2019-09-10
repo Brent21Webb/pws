@@ -10,4 +10,5 @@ var canvas = new Canvas(920, 920, "#A2C969", geti("map"));
 var seg1 = new Segment(new Vector(1, 1), new Vector(1, 6), 50, true, [], canvas);
 
 console.log(seg1.ID);
+console.log(canvas.segments);
 // canvas.addSegment(seg1);

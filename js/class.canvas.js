@@ -44,13 +44,13 @@ class Canvas {
 			this.ctx.strokeStyle = "#555";
 			this.ctx.lineWidth = 1;
 			// Draw horizontal
-			for(var i = 40; i < this.width; i += 40) {
+			for(var i = 30; i < this.width; i += 30) {
 				this.ctx.moveTo(0, i);
 				this.ctx.lineTo(this.width, i);
 				this.ctx.stroke();
 			}
 			// Draw vertical
-			for(var i = 40; i < this.height; i += 40) {
+			for(var i = 30; i < this.height; i += 30) {
 				this.ctx.lineStyle = "#444";
 				this.ctx.moveTo(i, 0);
 				this.ctx.lineTo(i, this.height);

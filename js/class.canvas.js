@@ -16,8 +16,8 @@ class Canvas {
 		this.ctx.width = this.canvas.width = this.width;
 		this.ctx.height = this.canvas.height = this.height;
 		this.ctx.translate(0.5, 0.5);
-		// Draw the background with grid
-		this.drawBackground(true);
+
+		this.update();
 
 
 		// Set eventlistener for canvas click ==> select road
@@ -25,8 +25,15 @@ class Canvas {
 		// this.canvas.addEventListener("click", function(e) {
 		// 	Canvas.clicked(e.clientX, e.clientY, TEMP);
 		// });
-
 	} // __init()
+
+
+	update() {
+		this.drawBackground(true);
+		console.log("I'm updating :)");
+		requestAnimationFrame(() => this.update());
+	}
+
 
 	drawBackground(grid) {
 		this.ctx.translate(-0.5, -0.5); // Reset translation to prevent white lines on the edges

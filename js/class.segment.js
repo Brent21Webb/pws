@@ -7,7 +7,7 @@ class Segment {
 		this.ns = isNorthSouth;
 		this.connected = connected;
 		this.canvas = canvas;
-		
+
 		this.sprite = new Image();
 		this.sprite.src = "sprites/road.png";
 		this.__init();
@@ -15,6 +15,7 @@ class Segment {
 
 	__init() {
 		this.ID = Segment.ID++;
+		this.canvas.addSegment(this);
 	}
 
 	draw(ctx) {

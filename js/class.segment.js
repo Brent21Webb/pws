@@ -9,7 +9,7 @@ class Segment {
 		this.canvas = canvas;
 
 		this.sprite = new Image();
-		this.sprite.src = "sprites/roads/roadHalf.png";
+		this.sprite.src = (this.dir % 2 === 0 ? "sprites/roads/roadHalfHorizontal.png" : "sprites/roads/roadHalf.png");
 		this.__init();
 	} // constructor
 

@@ -4,7 +4,7 @@ class Segment {
 		this.begin = begin;
 		this.end = end;
 		this.speed = speed;
-		this.dir = dir;
+		this.dir = dir; // 1> Right is up -- 2> Right is right -- 3> Right is down -- 4> Right is left
 		this.connected = connected;
 		this.canvas = canvas;
 

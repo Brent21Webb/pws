@@ -51,7 +51,6 @@ class Canvas {
 			}
 			// Draw vertical
 			for(var i = 30; i < this.height; i += 30) {
-				this.ctx.lineStyle = "#444";
 				this.ctx.moveTo(i, 0);
 				this.ctx.lineTo(i, this.height);
 				this.ctx.stroke();

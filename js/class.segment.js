@@ -19,7 +19,17 @@ class Segment {
 	}
 
 	draw(ctx) {
-		ctx.drawImage(this.sprite, 30, 30, 60 * (this.dir % 2 === 1 ? 1 : 0.5), 60 * (this.dir % 2 === 0 ? 1 : 0.5));
+		var dx = this.end.x - this.begin.x;
+		var dy = this.end.y - this.begin.y;
+		var t = Math.max(dx, dy);
+
+		for(var i = 0; i < t; i++) {
+			var x = (dx === 0 ? this.begin.x * 30 : (i + 1) * 30);
+			var y = (dy === 0 ? this.begin.y * 30 : (i + 1) * 30);
+			var w = 60 * (this.dir % 2 === 1 ? 1 : 0.5);
+			var h = 60 * (this.dir % 2 === 0 ? 1 : 0.5);
+			ctx.drawImage(this.sprite, x, y, w, h);
+		}
 	}
 } // class Segment
 

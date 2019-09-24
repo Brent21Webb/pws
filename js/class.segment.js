@@ -24,8 +24,8 @@ class Segment {
 		var t = Math.max(dx, dy);
 
 		for(var i = 0; i < t; i++) {
-			var x = (dx === 0 ? this.begin.x * 30 : (i + 1) * 30);
-			var y = (dy === 0 ? this.begin.y * 30 : (i + 1) * 30);
+			var x = (dx === 0 ? this.begin.x * 30 : i * 30 + (this.begin.x) * 30);
+			var y = (dy === 0 ? this.begin.y * 30 : i * 30 + (this.begin.y) * 30);
 			var w = 60 * (this.dir % 2 === 1 ? 1 : 0.5);
 			var h = 60 * (this.dir % 2 === 0 ? 1 : 0.5);
 			ctx.drawImage(this.sprite, x, y, w, h);

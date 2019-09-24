@@ -1,10 +1,10 @@
 class Segment {
-	//         Vector Vector Int    bool     IntArray (ID) Canvas
- 	constructor(begin, end, speed, isNorthSouth, connected, canvas) {
+	//         Vector Vector Int Int(1-4)  IntArray (ID) Canvas
+ 	constructor(begin, end, speed, dir, connected, canvas) {
 		this.begin = begin;
 		this.end = end;
 		this.speed = speed;
-		this.ns = isNorthSouth;
+		this.dir = dir;
 		this.connected = connected;
 		this.canvas = canvas;
 

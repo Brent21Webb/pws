@@ -37,6 +37,7 @@ class Segment {
 } // class Segment
 
 Segment.ID = 1;
+Segment.CONNECTIONS = ["intersection", "turn12", "turn23", "turn34", "turn41", "deadEnd"];
 
 
 

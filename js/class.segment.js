@@ -29,9 +29,16 @@ class Segment {
 			var x = (dx === 0 ? this.begin.x * 30 : i * 30 + (this.begin.x) * 30);
 			var y = (dy === 0 ? this.begin.y * 30 : i * 30 + (this.begin.y) * 30);
 			// Calculate width and height (horz/vert)
-			var w = 60 * (this.dir % 2 === 1 ? 1 : 0.5);
-			var h = 60 * (this.dir % 2 === 0 ? 1 : 0.5);
+			var w = (this.dir % 2 === 1 ? 60 : 30);
+			var h = (this.dir % 2 === 0 ? 60 : 30);
 			ctx.drawImage(this.sprite, x, y, w, h);
+		}
+
+		// Draw the road connections
+		for(var i in this.connected) {
+			var img = new Image();
+			img.src = "sprites/roads/" + Segment.CONNECTIONS[this.connected[i][1]] + ".png";
+			ctx.drawImage(img, this.end.x * 30, this.end.y * 30, 60, 60);
 		}
 	}
 } // class Segment

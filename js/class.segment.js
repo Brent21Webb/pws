@@ -49,25 +49,32 @@ class Segment {
 
 	draw(ctx) {
 		console.log(this.dx + " - " + this.dy + " (" + this.dir + ")");
-		var max = Math.max(this.dx, this.dy);
+		var max = (this.dx || this.dy) * (this.dir >= 3 ? -1 : 1);
 
 		for(var i = 0; i < t; i++) {
 			var x = (this.dx === 0 ? this.begin.x * 30 : (i + this.begin.x) * 30);
 			var y = (this.dy === 0 ? this.begin.y * 30 : (i + this.begin.y) * 30);
+
+			// Calculate width and height (horz/vert)
+			var w = (this.dir % 2 === 1 ? 60 : 30);
+			var h = (this.dir % 2 === 0 ? 60 : 30);
+
+
+			ctx.drawImage(this.sprite, x, y, w, h);
+
+			// White square on end vector
+			ctx.fillStyle = "#FFF";
+			var tx = this.end.x * 30 + (25 * (this.dir % 2)) - (10 * (1 - this.dir % 2));
+			var ty = this.end.y * 30 + (25 * (1 - this.dir % 2)) - (10 * (this.dir % 2));
+			ctx.fillRect(tx, ty, 10, 10);
 		}
 
-		// Calculate width and height (horz/vert)
-		var w = (this.dir % 2 === 1 ? 60 : 30);
-		var h = (this.dir % 2 === 0 ? 60 : 30);
+			// Draw the road connections
+			for(var i in this.connected) {
+				ctx.drawImage(Segment.CONNECTIONS[this.connected[i][1]], this.end.x * 30, this.end.y * 30, 60, 60);
+			} // for i in connected
+		} // for i
 
-
-
-
-
-		// Draw the road connections
-		for(var i in this.connected) {
-			ctx.drawImage(Segment.CONNECTIONS[this.connected[i][1]], this.end.x * 30, this.end.y * 30, 60, 60);
-		} // for i in connected
 
 		// var t = Math.max(this.dx, this.dy);
 		// for(var i = 0; i < t; i++) {

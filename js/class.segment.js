@@ -16,6 +16,12 @@ class Segment {
 	__init() {
 		this.ID = Segment.ID++;
 		this.canvas.addSegment(this);
+		this.CONNECTION_PATHS = ["intersection", "turn12", "turn23", "turn34", "turn41", "deadEnd"];
+		for(var i in this.CONNECTION_PATHS) {
+			var TEMP_IMG = new Image();
+			TEMP_IMG.src = "sprites/roads/" + this.CONNECTION_PATHS[i] + ".png";
+			Segment.CONNECTIONS[i] = TEMP_IMG;
+		}
 	}
 
 	draw(ctx) {
@@ -42,19 +48,15 @@ class Segment {
 
 		// Draw the road connections
 		for(var i in this.connected) {
-			const img = new Image();
-			img.src = "sprites/roads/" + Segment.CONNECTIONS[this.connected[i][1]] + ".png";
 
-			// console.log(img);
-
-			ctx.drawImage(img, 500, 500, 60, 60);
+			ctx.drawImage(Segment.CONNECTIONS[this.connected[i][1]], 500, 500, 60, 60);
 			// ctx.drawImage(img, this.end.x * 30 + this.begin.x * 30, this.end.y * 30 + this.begin.y * 30, 60, 60);
 		} // for i in connected
 	} // draw(ctx)
 } // class Segment
 
 Segment.ID = 1;
-Segment.CONNECTIONS = ["intersection", "turn12", "turn23", "turn34", "turn41", "deadEnd"];
+Segment.CONNECTIONS = [];
 
 
 

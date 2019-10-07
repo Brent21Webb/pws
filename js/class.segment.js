@@ -26,21 +26,31 @@ class Segment {
 
 		for(var i = 0; i < t; i++) {
 			// Calculate for every piece of the length of the road where it should be located
-			var x = (dx === 0 ? this.begin.x * 30 : i * 30 + (this.begin.x) * 30);
-			var y = (dy === 0 ? this.begin.y * 30 : i * 30 + (this.begin.y) * 30);
+			var x = (dx === 0 ? this.begin.x * 30 : (i + this.begin.x) * 30);
+			var y = (dy === 0 ? this.begin.y * 30 : (i + this.begin.y) * 30);
 			// Calculate width and height (horz/vert)
 			var w = (this.dir % 2 === 1 ? 60 : 30);
 			var h = (this.dir % 2 === 0 ? 60 : 30);
 			ctx.drawImage(this.sprite, x, y, w, h);
+
+			// White square on end vector
+			ctx.fillStyle = "#FFF";
+			var tx = this.end.x * 30 + (25 * (this.dir % 2));
+			var ty = this.end.y * 30 + (25 * (1 - this.dir % 2));
+			ctx.fillRect(tx, ty, 10, 10);
 		}
 
 		// Draw the road connections
 		for(var i in this.connected) {
-			var img = new Image();
+			const img = new Image();
 			img.src = "sprites/roads/" + Segment.CONNECTIONS[this.connected[i][1]] + ".png";
-			ctx.drawImage(img, this.end.x * 30, this.end.y * 30, 60, 60);
-		}
-	}
+
+			// console.log(img);
+
+			ctx.drawImage(img, 500, 500, 60, 60);
+			// ctx.drawImage(img, this.end.x * 30 + this.begin.x * 30, this.end.y * 30 + this.begin.y * 30, 60, 60);
+		} // for i in connected
+	} // draw(ctx)
 } // class Segment
 
 Segment.ID = 1;

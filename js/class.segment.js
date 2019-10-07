@@ -19,6 +19,12 @@ class Segment {
 		this.ID = Segment.ID++;
 		this.canvas.addSegment(this);
 
+		try {
+			if(this.dx !== 0 && this.dy !== 0) throw "there can only be one axis which changes value. ";
+		} catch(err) {
+			console.error("Error: " + err);
+		}
+
 		// Load connection images
 		this.CONNECTION_PATHS = ["intersection", "turn12", "turn23", "turn34", "turn41", "deadEnd"];
 		for(var i in this.CONNECTION_PATHS) {
@@ -29,9 +35,7 @@ class Segment {
 	} // __init()
 
 	draw(ctx) {
-		// Calculate the difference in x and y values
 		var t = Math.max(this.dx, this.dy);
-
 		for(var i = 0; i < t; i++) {
 			// Calculate for every piece of the length of the road where it should be located
 			var x = (this.dx === 0 ? this.begin.x * 30 : (i + this.begin.x) * 30);

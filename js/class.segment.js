@@ -48,8 +48,14 @@ class Segment {
 	} // __init()
 
 	draw(ctx) {
-
 		console.log(this.dx + " - " + this.dy + " (" + this.dir + ")");
+		var max = Math.max(this.dx, this.dy);
+
+		for(var i = 0; i < t; i++) {
+			var x = (this.dx === 0 ? this.begin.x * 30 : (i + this.begin.x) * 30);
+			var y = (this.dy === 0 ? this.begin.y * 30 : (i + this.begin.y) * 30);
+		}
+
 
 		// var t = Math.max(this.dx, this.dy);
 		// for(var i = 0; i < t; i++) {

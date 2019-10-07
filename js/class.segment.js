@@ -3,6 +3,8 @@ class Segment {
  	constructor(begin, end, speed, dir, connected, canvas) {
 		this.begin = begin;
 		this.end = end;
+		this.dx = this.end.x - this.begin.x;
+		this.dy = this.end.y - this.begin.y;
 		this.speed = speed;
 		this.dir = dir; // 1> Right goes up -- 2> Right goes left -- 3> Right goes down -- 4> Right goes right
 		this.connected = connected;
@@ -24,18 +26,16 @@ class Segment {
 			TEMP_IMG.src = "sprites/roads/" + this.CONNECTION_PATHS[i] + ".png";
 			Segment.CONNECTIONS[i] = TEMP_IMG;
 		}
-	}
+	} // __init()
 
 	draw(ctx) {
 		// Calculate the difference in x and y values
-		var dx = this.end.x - this.begin.x;
-		var dy = this.end.y - this.begin.y;
-		var t = Math.max(dx, dy);
+		var t = Math.max(this.dx, this.dy);
 
 		for(var i = 0; i < t; i++) {
 			// Calculate for every piece of the length of the road where it should be located
-			var x = (dx === 0 ? this.begin.x * 30 : (i + this.begin.x) * 30);
-			var y = (dy === 0 ? this.begin.y * 30 : (i + this.begin.y) * 30);
+			var x = (this.dx === 0 ? this.begin.x * 30 : (i + this.begin.x) * 30);
+			var y = (this.dy === 0 ? this.begin.y * 30 : (i + this.begin.y) * 30);
 			// Calculate width and height (horz/vert)
 			var w = (this.dir % 2 === 1 ? 60 : 30);
 			var h = (this.dir % 2 === 0 ? 60 : 30);

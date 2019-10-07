@@ -16,6 +16,8 @@ class Segment {
 	__init() {
 		this.ID = Segment.ID++;
 		this.canvas.addSegment(this);
+
+		// Load connection images
 		this.CONNECTION_PATHS = ["intersection", "turn12", "turn23", "turn34", "turn41", "deadEnd"];
 		for(var i in this.CONNECTION_PATHS) {
 			var TEMP_IMG = new Image();
@@ -41,16 +43,14 @@ class Segment {
 
 			// White square on end vector
 			ctx.fillStyle = "#FFF";
-			var tx = this.end.x * 30 + (25 * (this.dir % 2));
-			var ty = this.end.y * 30 + (25 * (1 - this.dir % 2));
+			var tx = this.end.x * 30 + (25 * (this.dir % 2)) - (10 * (1 - this.dir % 2));
+			var ty = this.end.y * 30 + (25 * (1 - this.dir % 2)) - (10 * (this.dir % 2));
 			ctx.fillRect(tx, ty, 10, 10);
 		}
 
 		// Draw the road connections
 		for(var i in this.connected) {
-
 			ctx.drawImage(Segment.CONNECTIONS[this.connected[i][1]], this.end.x * 30, this.end.y * 30, 60, 60);
-			// ctx.drawImage(img, this.end.x * 30 + this.begin.x * 30, this.end.y * 30 + this.begin.y * 30, 60, 60);
 		} // for i in connected
 	} // draw(ctx)
 } // class Segment

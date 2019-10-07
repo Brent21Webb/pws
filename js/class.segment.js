@@ -49,7 +49,7 @@ class Segment {
 		// Draw the road connections
 		for(var i in this.connected) {
 
-			ctx.drawImage(Segment.CONNECTIONS[this.connected[i][1]], 500, 500, 60, 60);
+			ctx.drawImage(Segment.CONNECTIONS[this.connected[i][1]], this.end.x * 30, this.end.y * 30, 60, 60);
 			// ctx.drawImage(img, this.end.x * 30 + this.begin.x * 30, this.end.y * 30 + this.begin.y * 30, 60, 60);
 		} // for i in connected
 	} // draw(ctx)

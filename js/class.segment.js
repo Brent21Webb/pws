@@ -48,21 +48,21 @@ class Segment {
 	} // __init()
 
 	draw(ctx) {
-		var t = Math.max(this.dx, this.dy);
-		for(var i = 0; i < t; i++) {
-			// Calculate for every piece of the length of the road where it should be located
-			var x = (this.dx === 0 ? this.begin.x * 30 : (i + this.begin.x) * 30);
-			var y = (this.dy === 0 ? this.begin.y * 30 : (i + this.begin.y) * 30);
-			// Calculate width and height (horz/vert)
-			var w = (this.dir % 2 === 1 ? 60 : 30);
-			var h = (this.dir % 2 === 0 ? 60 : 30);
-			ctx.drawImage(this.sprite, x, y, w, h);
-
-			// White square on end vector
-			ctx.fillStyle = "#FFF";
-			var tx = this.end.x * 30 + (25 * (this.dir % 2)) - (10 * (1 - this.dir % 2));
-			var ty = this.end.y * 30 + (25 * (1 - this.dir % 2)) - (10 * (this.dir % 2));
-			ctx.fillRect(tx, ty, 10, 10);
+		// var t = Math.max(this.dx, this.dy);
+		// for(var i = 0; i < t; i++) {
+		// 	// Calculate for every piece of the length of the road where it should be located
+		// 	var x = (this.dx === 0 ? this.begin.x * 30 : (i + this.begin.x) * 30);
+		// 	var y = (this.dy === 0 ? this.begin.y * 30 : (i + this.begin.y) * 30);
+		// 	// Calculate width and height (horz/vert)
+		// 	var w = (this.dir % 2 === 1 ? 60 : 30);
+		// 	var h = (this.dir % 2 === 0 ? 60 : 30);
+		// 	ctx.drawImage(this.sprite, x, y, w, h);
+		//
+		// 	// White square on end vector
+		// 	ctx.fillStyle = "#FFF";
+		// 	var tx = this.end.x * 30 + (25 * (this.dir % 2)) - (10 * (1 - this.dir % 2));
+		// 	var ty = this.end.y * 30 + (25 * (1 - this.dir % 2)) - (10 * (this.dir % 2));
+		// 	ctx.fillRect(tx, ty, 10, 10);
 		}
 
 		// Draw the road connections

@@ -51,12 +51,11 @@ class Segment {
 		console.log(this.dx + " - " + this.dy + " (" + this.dir + ")");
 
 		const corr = (this.dir >= 3 ? -1 : 1);
-		// var corr = 1;
 		var max = (this.dx || this.dy) * corr;
 
-		for(var i = 0; i < max; i += corr) {
-			var x = (this.dx === 0 ? this.begin.x * 30 : (i + this.begin.x) * 30);
-			var y = (this.dy === 0 ? this.begin.y * 30 : (i + this.begin.y) * 30);
+		for(var i = 0; (corr > 0 ? (i < max) : (i > max)); i += corr) {
+			var x = (this.dx === 0 ? this.begin.x * 30 : (i + this.begin.x) * 30 - (corr < 0 ? 30 : 0));
+			var y = (this.dy === 0 ? this.begin.y * 30 : (i + this.begin.y) * 30 - (corr < 0 ? 30 : 0));
 
 			// Calculate width and height (horz/vert)
 			var w = (this.dir % 2 === 1 ? 60 : 30);
@@ -64,6 +63,7 @@ class Segment {
 
 
 			ctx.drawImage(this.sprite, x, y, w, h);
+
 
 			// White square on end vector
 			ctx.fillStyle = "#FFF";

@@ -6,12 +6,10 @@ class Segment {
 		this.dx = this.end.x - this.begin.x;
 		this.dy = this.end.y - this.begin.y;
 		this.speed = speed;
-		this.dir = dir; // 1> Right goes down -- 2> Right goes right -- 3> Right goes up -- 4> Right goes left
 		this.connected = connected;
 		this.canvas = canvas;
 
-		this.sprite = new Image();
-		this.sprite.src = (this.dir % 2 === 0 ? "sprites/roads/roadHalfHorizontal.png" : "sprites/roads/roadHalf.png");
+		this.dir; // 1> Right goes down -- 2> Right goes right -- 3> Right goes up -- 4> Right goes left
 		this.__init();
 	} // constructor
 
@@ -35,6 +33,10 @@ class Segment {
 		if(this.dx < 0 || this.dy < 0) {
 			this.dx *= -1; this.dy *= -1;
 		}
+
+		// Load road sprite
+		this.sprite = new Image();
+		this.sprite.src = (this.dir % 2 === 0 ? "sprites/roads/roadHalfHorizontal.png" : "sprites/roads/roadHalf.png");
 
 		// Load connection images
 		this.CONNECTION_PATHS = ["intersection", "turn12", "turn23", "turn34", "turn41", "deadEnd"];

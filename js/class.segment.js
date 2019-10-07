@@ -1,12 +1,12 @@
 class Segment {
-	//         Vector Vector Int Int(1-4)  IntArray (ID) Canvas
- 	constructor(begin, end, speed, dir, connected, canvas) {
+	//         Vector Vector Int IntArray (ID) Canvas
+ 	constructor(begin, end, speed, connected, canvas) {
 		this.begin = begin;
 		this.end = end;
 		this.dx = this.end.x - this.begin.x;
 		this.dy = this.end.y - this.begin.y;
 		this.speed = speed;
-		this.dir = dir; // 1> Right goes up -- 2> Right goes left -- 3> Right goes down -- 4> Right goes right
+		this.dir = dir; // 1> Right goes down -- 2> Right goes right -- 3> Right goes up -- 4> Right goes left
 		this.connected = connected;
 		this.canvas = canvas;
 
@@ -19,10 +19,21 @@ class Segment {
 		this.ID = Segment.ID++;
 		this.canvas.addSegment(this);
 
+		// Catch possible errors
 		try {
 			if(this.dx !== 0 && this.dy !== 0) throw "there can only be one axis which changes value. ";
 		} catch(err) {
 			console.error("Error: " + err);
+		}
+
+		if(this.dy < 0) { this.dir = 1; }
+		else if(this.dy > 0) { this.dir = 3; }
+		else if(this.dx < 0) { this.dir = 4; }
+		else if(this.dx > 0) { this.dir = 2; }
+
+		// If negative dx/dy, swap begin and endpoint
+		if(this.dx < 0 || this.dy < 0) {
+			this.dx *= -1; this.dy *= -1;
 		}
 
 		// Load connection images

@@ -67,8 +67,7 @@ class Segment {
 			var tx = this.end.x * 30 + (25 * (this.dir % 2)) - (10 * (1 - this.dir % 2));
 			var ty = this.end.y * 30 + (25 * (1 - this.dir % 2)) - (10 * (this.dir % 2));
 			ctx.fillRect(tx, ty, 10, 10);
-		}
-
+		
 			// Draw the road connections
 			for(var i in this.connected) {
 				ctx.drawImage(Segment.CONNECTIONS[this.connected[i][1]], this.end.x * 30, this.end.y * 30, 60, 60);

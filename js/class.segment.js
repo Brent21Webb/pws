@@ -56,6 +56,18 @@ class Segment {
 			var y = (this.dy === 0 ? this.begin.y * 30 : (i + this.begin.y) * 30);
 		}
 
+		// Calculate width and height (horz/vert)
+		var w = (this.dir % 2 === 1 ? 60 : 30);
+		var h = (this.dir % 2 === 0 ? 60 : 30);
+
+
+
+
+
+		// Draw the road connections
+		for(var i in this.connected) {
+			ctx.drawImage(Segment.CONNECTIONS[this.connected[i][1]], this.end.x * 30, this.end.y * 30, 60, 60);
+		} // for i in connected
 
 		// var t = Math.max(this.dx, this.dy);
 		// for(var i = 0; i < t; i++) {

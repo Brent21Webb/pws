@@ -49,7 +49,9 @@ class Segment {
 
 	draw(ctx) {
 		console.log(this.dx + " - " + this.dy + " (" + this.dir + ")");
+
 		const corr = (this.dir >= 3 ? -1 : 1);
+		// var corr = 1;
 		var max = (this.dx || this.dy) * corr;
 
 		for(var i = 0; i < max; i += corr) {
@@ -68,12 +70,13 @@ class Segment {
 			var tx = this.end.x * 30 + (25 * (this.dir % 2)) - (10 * (1 - this.dir % 2));
 			var ty = this.end.y * 30 + (25 * (1 - this.dir % 2)) - (10 * (this.dir % 2));
 			ctx.fillRect(tx, ty, 10, 10);
-
-			// Draw the road connections
-			for(var i in this.connected) {
-				ctx.drawImage(Segment.CONNECTIONS[this.connected[i][1]], this.end.x * 30, this.end.y * 30, 60, 60);
-			} // for i in connected
 		} // for i
+
+		// Draw the road connections
+		for(var i in this.connected) {
+			ctx.drawImage(Segment.CONNECTIONS[this.connected[i][1]], this.end.x * 30, this.end.y * 30, 60, 60);
+		} // for i in connected
+
 
 
 		// var t = Math.max(this.dx, this.dy);

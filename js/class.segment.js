@@ -24,10 +24,10 @@ class Segment {
 			console.error("Error: " + err);
 		}
 
-		if(this.dy < 0) { this.dir = 1; }
-		else if(this.dy > 0) { this.dir = 3; }
-		else if(this.dx < 0) { this.dir = 4; }
+		if(this.dy > 0) { this.dir = 1; }
 		else if(this.dx > 0) { this.dir = 2; }
+		else if(this.dy < 0) { this.dir = 3; }
+		else if(this.dx < 0) { this.dir = 4; }
 
 		// If negative dx/dy, swap begin and endpoint
 		if(this.dx < 0 || this.dy < 0) {
@@ -48,6 +48,9 @@ class Segment {
 	} // __init()
 
 	draw(ctx) {
+
+		console.log(this.dx + " - " + this.dy + " (" + this.dir + ")");
+
 		// var t = Math.max(this.dx, this.dy);
 		// for(var i = 0; i < t; i++) {
 		// 	// Calculate for every piece of the length of the road where it should be located
@@ -70,7 +73,7 @@ class Segment {
 		// 	ctx.drawImage(Segment.CONNECTIONS[this.connected[i][1]], this.end.x * 30, this.end.y * 30, 60, 60);
 		// } // for i in connected
 
-		
+
 	} // draw(ctx)
 } // class Segment
 

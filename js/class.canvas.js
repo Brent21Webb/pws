@@ -18,14 +18,20 @@ class Canvas {
 		this.ctx.translate(0.5, 0.5);
 
 		this.update();
-
-
-		// Set eventlistener for canvas click ==> select road
-		// var TEMP = this;
-		// this.canvas.addEventListener("click", function(e) {
-		// 	Canvas.clicked(e.clientX, e.clientY, TEMP);
-		// });
 	} // __init()
+
+
+	initSegmentSpawning() {
+		const ids = [];
+		const conn = [];
+		for(var i in this.segments) {
+			ids.push(this.segments[i].ID);
+			if(this.segments[i].connected[0]) {
+				conn.push(this.segments[i].connected[1]);
+			}
+		}
+		console.log("IDs: " + isd + "\nConnected: " + conn);
+	}
 
 
 	update() {

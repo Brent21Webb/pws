@@ -12,6 +12,8 @@ var seg1 = new Segment(new Vector(1, 1), new Vector(1, 6), 50, [[2, 1]], canvas)
 var seg3 = new Segment(new Vector(3, 6), new Vector(10, 6), 50, [], canvas);
 // var seg4 = new Segment(new Vector(6, 8), new Vector(3, 8), 50, [], canvas);
 
+canvas.initSegmentSpawning();
+
 // console.log(seg1.ID);
 console.log(canvas.segments);
 // canvas.addSegment(seg1);

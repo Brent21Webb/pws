@@ -80,9 +80,9 @@ class Segment {
 		} // for i
 
 		// Draw the road connections
-		for(var i in this.connected) {
-			ctx.drawImage(Segment.CONNECTIONS[this.connected[i][1]], this.end.x * 30, this.end.y * 30, 60, 60);
-		} // for i in connected
+		if(this.connected) {
+			ctx.drawImage(Segment.CONNECTIONS[this.connected[0]], this.end.x * 30, this.end.y * 30, 60, 60);
+		} // if connected
 
 	} // draw(ctx)
 } // class Segment

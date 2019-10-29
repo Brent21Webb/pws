@@ -9,6 +9,8 @@ class Segment {
 		this.connected = connected;
 		this.canvas = canvas;
 
+		this.spawner = undefined;
+
 		this.dir; // 1> Right goes down -- 2> Right goes right -- 3> Right goes up -- 4> Right goes left
 		this.__init();
 	} // constructor
@@ -34,7 +36,7 @@ class Segment {
 			this.dx *= -1; this.dy *= -1;
 		}
 
-		// Load road sprite
+		// SPRITE LOADING
 		this.sprite = new Image();
 		this.sprite.src = (this.dir % 2 === 0 ? "sprites/roads/roadHalfHorizontalNew.png" : "sprites/roads/roadHalfNew.png");
 
@@ -45,6 +47,12 @@ class Segment {
 			TEMP_IMG.src = "sprites/roads/" + this.CONNECTION_PATHS[i] + "New.png";
 			Segment.CONNECTIONS[i] = TEMP_IMG;
 		}
+
+		// SPAWNER INITIALISING
+		if(true) {
+
+		}
+
 	} // __init()
 
 	draw(ctx) {

@@ -6,6 +6,7 @@ class Canvas {
 		this.canvas = elem;
 
 		this.segments = [];
+		this.spawners = [];
 
 		this.__init();
 	} // constructor
@@ -24,6 +25,7 @@ class Canvas {
 	initSegmentSpawning() {
 		const ids = [];
 		const conn = [];
+		// Initialise arrays for checking the overlap
 		for(var i in this.segments) {
 			ids.push(this.segments[i].ID);
 			if(this.segments[i].connected[0]) {
@@ -31,6 +33,14 @@ class Canvas {
 			}
 		}
 		console.log("IDs: " + ids + "\nConnected: " + conn);
+		// Get overlap
+		const leftwith = [];
+		for(var i in ids) {
+			if(!conn.contains(ids[i])) {
+				leftwith.push(ids[i]);
+			}
+		}
+		// initialise the leftwiths as spawners
 	}
 
 

@@ -1,5 +1,5 @@
 class Segment {
-	//         Vector Vector Int IntArray (ID) Canvas
+	//         Vector Vector Int array (ID, conn) Canvas
  	constructor(begin, end, speed, connected, canvas) {
 		this.begin = begin;
 		this.end = end;

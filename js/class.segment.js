@@ -42,7 +42,7 @@ class Segment {
 		this.CONNECTION_PATHS = ["intersection", "turn12", "turn23", "turn34", "turn41", "deadEnd"];
 		for(var i in this.CONNECTION_PATHS) {
 			var TEMP_IMG = new Image();
-			TEMP_IMG.src = "sprites/roads/" + this.CONNECTION_PATHS[i] + ".png";
+			TEMP_IMG.src = "sprites/roads/" + this.CONNECTION_PATHS[i] + "New.png";
 			Segment.CONNECTIONS[i] = TEMP_IMG;
 		}
 	} // __init()

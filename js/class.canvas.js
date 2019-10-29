@@ -36,7 +36,7 @@ class Canvas {
 		// Get overlap
 		const leftwith = [];
 		for(var i in ids) {
-			if(!conn.contains(ids[i])) {
+			if(!conn.includes(ids[i])) {
 				leftwith.push(ids[i]);
 			}
 		}

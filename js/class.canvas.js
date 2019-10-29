@@ -30,7 +30,7 @@ class Canvas {
 				conn.push(this.segments[i].connected[1]);
 			}
 		}
-		console.log("IDs: " + isd + "\nConnected: " + conn);
+		console.log("IDs: " + ids + "\nConnected: " + conn);
 	}
 
 

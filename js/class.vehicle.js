@@ -28,8 +28,8 @@ class Vehicle {
 		console.log("I'm updating :))");
 	} // update()
 
-	draw() {
-
+	draw(ctx) {
+		ctx.drawImage(this.sprite, this.x, this.y, 30, 30);
 	} // draw()
 }
 Vehicle.SPRITES = [];

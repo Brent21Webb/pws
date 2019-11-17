@@ -24,19 +24,19 @@ class Canvas {
 
 	initSegmentSpawning() {
 		const ids = [];
-		const connectedTo = [];
+		const connectedFrom = [];
 		// Initialise arrays for checking the overlap
 		for(var i in this.segments) {
 			ids.push(this.segments[i].ID);
 			if(this.segments[i].connected[0]) {
-				connectedTo.push(this.segments[i].connected[1]);
+				connectedFrom.push(this.segments[i].connected[1]);
 			}
 		}
-		console.log("IDs: " + ids + "\nHas connection to: " + connectedTo);
+		console.log("IDs: " + ids + "\nHas a connection from somewhere: " + connectedFrom);
 		// Get overlap
 		const leftwith = [];
 		for(var i in ids) {
-			if(!connectedTo.includes(ids[i])) {
+			if(!connectedFrom.includes(ids[i])) {
 				leftwith.push(ids[i]);
 			}
 		}

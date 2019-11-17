@@ -8,10 +8,6 @@ class Vehicle {
 	}
 
 	__init() {
-		// SPRITE LOADING
-		// this.sprite = new Image();
-		// this.sprite.src = (this.dir % 2 === 0 ? "sprites/roads/roadHalfHorizontalNew.png" : "sprites/roads/roadHalfNew.png");
-
 		// Load sprite images
 		this.CARS = ["blue", "green", "orange", "pink"];
 		for(var i in this.CARS) {

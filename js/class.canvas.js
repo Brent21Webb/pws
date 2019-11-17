@@ -45,7 +45,10 @@ class Canvas {
 		}
 
 		// initialise the leftwiths as spawners
-		
+		for(var i in leftwith) {
+			leftwith[i].initAsSpawner();
+		}
+		this.spawners = leftwith;
 	}
 
 

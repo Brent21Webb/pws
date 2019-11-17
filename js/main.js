@@ -2,6 +2,9 @@
 function geti(s) { // getElementById shortcut
 	return document.getElementById(s);
 }
+function timeDiff(t1, t2) {
+	return (t2.getTime() - t1.getTime()) / 1000;
+}
 
 // Make the canvas element
 var canvas = new Canvas(930, 930, "#A2C969", geti("map"));

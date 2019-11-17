@@ -23,5 +23,9 @@ class Vehicle {
 		// Set sprite based on end point
 		this.sprite = Vehicle.SPRITES[this.end];
 	}
+
+	update() {
+		console.log("I'm updating :))");
+	}
 }
 Vehicle.SPRITES = [];

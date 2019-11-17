@@ -47,12 +47,6 @@ class Segment {
 			TEMP_IMG.src = "sprites/roads/" + this.CONNECTION_PATHS[i] + "New.png";
 			Segment.CONNECTIONS[i] = TEMP_IMG;
 		}
-
-		// SPAWNER INITIALISING
-		if(true) {
-
-		}
-
 	} // __init()
 
 

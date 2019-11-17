@@ -8,6 +8,8 @@ class Canvas {
 		this.segments = [];
 		this.spawners = [];
 
+		this.vehicles = [];
+
 		this.lastSpawn = undefined;
 
 		this.__init();
@@ -56,6 +58,7 @@ class Canvas {
 
 
 	update() {
+		// Check if spawning is necessary
 		var d = new Date();
 		if(timeDiff(this.lastSpawn, d) > 1) {
 			this.lastSpawn = d;
@@ -63,11 +66,17 @@ class Canvas {
 			for(var i in this.spawners) {
 				this.spawners[i].spawn(Math.floor(Math.random() * 10));
 			}
-
-			console.log("Spawning ended.");
 		}
+
+		// Update all vehicles
+		for(var i in this.vehicles) {
+			this.vehicles[i].update();
+		}
+
+		// Draw everything
 		this.draw(true);
 
+		// Request new update 
 		requestAnimationFrame(() => this.update());
 	}
 

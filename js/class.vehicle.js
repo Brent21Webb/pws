@@ -21,10 +21,7 @@ class Vehicle {
 		}
 
 		// Set sprite based on end point
-		if(this.end == 1) {
-			this.sprite = new Image();
-			this.sprite.src = "";
-		}
+		this.sprite = Vehicle.SPRITES[this.end];
 	}
 }
 Vehicle.SPRITES = [];

@@ -76,7 +76,7 @@ class Canvas {
 		// Draw everything
 		this.draw(true);
 
-		// Request new update 
+		// Request new update
 		requestAnimationFrame(() => this.update());
 	}
 
@@ -110,9 +110,16 @@ class Canvas {
 		}
 	}
 
+	drawVehicles() {
+		for(var i in this.vehicles) {
+			this.vehicles[i].draw(this.ctx);
+		}
+	}
+
 	draw(grid) {
 		this.drawBackground(grid);
 		this.drawRoads();
+		this.drawVehicles();
 	}
 
 	addSegment(s) {

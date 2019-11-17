@@ -1,6 +1,8 @@
 class Vehicle {
 	constructor(segment, end) {
 		this.segment = segment;
+		this.x = this.segment.x * 30;
+		this.y = this.segment.y * 30;
 		this.end = end;
 		this.sprite = undefined;
 
@@ -21,7 +23,13 @@ class Vehicle {
 	}
 
 	update() {
+
+		this.draw();
 		console.log("I'm updating :))");
-	}
+	} // update()
+
+	draw() {
+
+	} // draw()
 }
 Vehicle.SPRITES = [];

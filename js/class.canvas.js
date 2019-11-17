@@ -82,6 +82,7 @@ class Canvas {
 
 
 	drawBackground(grid) {
+		this.ctx.beginPath();
 		this.ctx.translate(-0.5, -0.5); // Reset translation to prevent white lines on the edges
 		this.ctx.fillStyle = this.bg;
 		this.ctx.fillRect(0, 0, this.width, this.height);
@@ -102,18 +103,23 @@ class Canvas {
 				this.ctx.stroke();
 			}
 		} // grid
+			this.ctx.closePath();
 	} // drawBackground
 
 	drawRoads() {
+		this.ctx.beginPath();
 		for(var i in this.segments) {
 			this.segments[i].draw(this.ctx);
 		}
+		this.ctx.closePath();
 	}
 
 	drawVehicles() {
+		this.ctx.beginPath();
 		for(var i in this.vehicles) {
 			this.vehicles[i].draw(this.ctx);
 		}
+		this.ctx.closePath();
 	}
 
 	draw(grid) {

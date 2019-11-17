@@ -16,6 +16,11 @@ var seg3 = new Segment(new Vector(3, 6), new Vector(10, 6), 50, [3, [3]], canvas
 var seg4 = new Segment(new Vector(10, 8), new Vector(10, 11), 50, [], canvas)
 // var seg4 = new Segment(new Vector(6, 8), new Vector(3, 8), 50, [], canvas);
 
+
+// TODO: make a segment with multiple exit points
+// TODO: make all of this more efficient => Gets slow really quick
+
+
 canvas.initSegmentSpawning();
 
 // console.log(seg1.ID);

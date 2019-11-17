@@ -11,6 +11,7 @@ class Vehicle {
 
 	__init() {
 		// Load sprite images
+		// TODO: load all four directions
 		this.CARS = ["blue", "green", "orange", "pink"];
 		for(var i in this.CARS) {
 			var TEMP_IMG = new Image();
@@ -25,11 +26,14 @@ class Vehicle {
 	update() {
 		this.x += this.segment.dx * (50 / this.segment.speed);
 		this.y += this.segment.dy * (50 / this.segment.speed);
+
+		// TODO: if car exceeds the segment length (including the connector, so length + 1 segment part (= 60px))
 	} // update()
 
 	draw(ctx) {
-
 		ctx.drawImage(this.sprite, this.x, this.y, 30, 30);
+
+		// TODO: add height/length according to what direction the car is moving
 	} // draw()
 }
 Vehicle.SPRITES = [];

@@ -61,6 +61,13 @@ class Segment {
 	}
 
 
+	spawn(x) {
+		if(x >= 5) {
+			this.canvas.vehicles.push(new Vehicle());
+		}
+	}
+
+
 	draw(ctx) {
 		// Calculate the correction and maximum
 		const corr = (this.dir >= 3 ? -1 : 1);

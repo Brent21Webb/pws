@@ -55,6 +55,12 @@ class Segment {
 
 	} // __init()
 
+
+	initAsSpawner() {
+		this.spawner = true;
+	}
+
+
 	draw(ctx) {
 		// Calculate the correction and maximum
 		const corr = (this.dir >= 3 ? -1 : 1);

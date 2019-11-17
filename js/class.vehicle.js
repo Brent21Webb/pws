@@ -23,8 +23,6 @@ class Vehicle {
 	}
 
 	update() {
-
-		this.draw();
 		console.log("I'm updating :))");
 	} // update()
 

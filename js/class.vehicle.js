@@ -23,11 +23,12 @@ class Vehicle {
 	}
 
 	update() {
-
+		this.x += this.segment.dx * (50 / this.segment.speed);
+		this.y += this.segment.dy * (50 / this.segment.speed);
 	} // update()
 
 	draw(ctx) {
-		console.log(this.x + "x" + this.y);
+
 		ctx.drawImage(this.sprite, this.x, this.y, 30, 30);
 	} // draw()
 }

@@ -8,6 +8,8 @@ class Canvas {
 		this.segments = [];
 		this.spawners = [];
 
+		this.lastSpawn = undefined;
+
 		this.__init();
 	} // constructor
 
@@ -18,6 +20,7 @@ class Canvas {
 		this.ctx.height = this.canvas.height = this.height;
 		this.ctx.translate(0.5, 0.5);
 
+		this.lastSpawn = new Date();
 		this.update();
 	} // __init()
 
@@ -40,7 +43,7 @@ class Canvas {
 		for(var i in ids) {
 			// If ID has no connection from somewhere
 			if(!connectedFrom.includes(ids[i])) {
-				leftwith.push(ids[i]);
+				leftwith.push(this.segments[ids[i] - 1]);
 			}
 		}
 
@@ -53,6 +56,16 @@ class Canvas {
 
 
 	update() {
+		var d = new Date();
+		if(timeDiff(this.lastSpawn, d) > 1) {
+			this.lastSpawn = d;
+
+			for(var i in this.spawners) {
+				this.spawners[i].spawn(Math.floor(Math.random() * 10));
+			}
+
+			console.log("Spawning ended.");
+		}
 		this.draw(true);
 
 		requestAnimationFrame(() => this.update());

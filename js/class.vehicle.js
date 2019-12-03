@@ -2,8 +2,8 @@ class Vehicle {
 	constructor(canvas, segment, end) {
 		this.canvas = canvas;
 		this.segment = segment;
-		this.x = this.segment.begin.x * 30;
-		this.y = this.segment.begin.y * 30;
+		this.x = this.segment.begin.x * 30 + (this.segment.dx ? 0 : 15);
+		this.y = this.segment.begin.y * 30 + (this.segment.dy ? 0 : 15);
 		this.end = end;
 		this.sprite = undefined;
 
@@ -29,9 +29,11 @@ class Vehicle {
 		this.y += (this.segment.dy ? this.segment.speed / 25 : 0);
 
 		// TODO: if car exceeds the segment length (including the connector, so length + 1 segment part (= 60px))
-		if((this.x > (this.segment.end.x + 1) * 30 && this.segment.dx !== 0) || (this.y > (this.segment.end.y + 1) * 30 && this.segment.dy !== 0)) {
+		if((this.x >= this.segment.end.x * 30 && this.segment.dx !== 0) || (this.y >= this.segment.end.y * 30 && this.segment.dy !== 0)) {
 			this.segment = this.canvas.segments[this.segment.connected[1][0] - 1]; // Equal to next segment --> Either the only one or the one which leads to the shortest route to the end
 			console.log(this.segment);
+			this.x += (this.segment.dx ? 0 : 15);
+			this.y += (this.segment.dy ? 0 : 15);
 		}
 	} // update()
 

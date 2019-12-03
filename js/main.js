@@ -17,6 +17,7 @@ var seg4 = new Segment(new Vector(15, 11), new Vector(5, 11), 50, [2, [5]], canv
 var seg5 = new Segment(new Vector(5, 11), new Vector(5, 3), 50, [], canvas);
 
 
+
 // TODO: make a segment with multiple exit points
 // TODO: make all of this more efficient => Gets slow really quick
 

@@ -12,15 +12,18 @@ class Vehicle {
 	__init() {
 		// Load sprite images
 		// TODO: load all four directions
-		this.CARS = ["blue", "green", "orange", "pink"];
-		for(var i in this.CARS) {
+		this.DIRECTIONS = ["top", "right", "down", "left"];
+		this.COLOURS = ["blue", "green", "orange", "pink"];
+		this.colour = this.COLOURS[this.end];
+
+		for(var i in this.DIRECTIONS) {
 			var TEMP_IMG = new Image();
-			TEMP_IMG.src = "sprites/cars/" + this.CARS[i] + "down.png";
+			TEMP_IMG.src = "sprites/cars/" + this.colour + "/" + this.DIRECTIONS[i] + ".png";
 			Vehicle.SPRITES[i] = TEMP_IMG;
 		}
 
-		// Set sprite based on end point
-		this.sprite = Vehicle.SPRITES[this.end];
+		// Set sprite based on segment direction
+		this.sprite = Vehicle.SPRITES[this.segment.dir];
 	}
 
 	update() {

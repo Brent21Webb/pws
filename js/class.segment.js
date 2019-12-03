@@ -57,7 +57,7 @@ class Segment {
 
 	spawn(x) {
 		if(x >= 5) {
-			this.canvas.vehicles.push(new Vehicle(this, 3));
+			this.canvas.vehicles.push(new Vehicle(this.canvas, this, 3));
 			console.log("Spawn");
 		}
 		else {

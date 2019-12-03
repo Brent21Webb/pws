@@ -48,8 +48,6 @@ class Vehicle {
 				console.error("Unknown direction. ");
 		}
 		ctx.drawImage(this.sprite, this.x, this.y, w, h);
-
-		// TODO: add height/length according to what direction the car is moving
 	} // draw()
 }
 Vehicle.SPRITES = [];

@@ -31,9 +31,6 @@ class Vehicle {
 		// TODO: if car exceeds the segment length (including the connector, so length + 1 segment part (= 60px))
 		if((this.x >= this.segment.end.x * 30 && this.segment.dx !== 0) || (this.y >= this.segment.end.y * 30 && this.segment.dy !== 0)) {
 			this.segment = this.canvas.segments[this.segment.connected[1][0] - 1]; // Equal to next segment --> Either the only one or the one which leads to the shortest route to the end
-			console.log(this.segment);
-			this.x += (this.segment.dx ? 0 : 15);
-			this.y += (this.segment.dy ? 0 : 15);
 		}
 	} // update()
 
@@ -41,6 +38,8 @@ class Vehicle {
 		// Set sprite based on segment direction
 		this.sprite = Vehicle.SPRITES[this.segment.dir - 1];
 		var w, h;
+		this.x += (this.segment.dx ? 0 : 15);
+		this.y += (this.segment.dy ? 0 : 15);
 		switch(this.segment.dir) {
 			case 1: // If goes up or down
 			case 3:

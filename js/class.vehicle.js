@@ -12,7 +12,7 @@ class Vehicle {
 	__init() {
 		// Load sprite images
 		// TODO: load all four directions
-		this.DIRECTIONS = ["top", "right", "down", "left"];
+		this.DIRECTIONS = ["down", "right", "top", "left"];
 		this.COLOURS = ["blue", "green", "orange", "pink"];
 		this.colour = this.COLOURS[this.end];
 

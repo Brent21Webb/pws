@@ -42,8 +42,7 @@ class Vehicle {
 				break;
 			case 2: // If goes right or left
 			case 4:
-				w = 60;
-				h = 30;
+				w = 60;	h = 30;
 				break;
 			default:
 				console.error("Unknown direction. ");

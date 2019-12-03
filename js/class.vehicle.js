@@ -33,7 +33,7 @@ class Vehicle {
 
 		// TODO: if car exceeds the segment length (including the connector, so length + 1 segment part (= 60px))
 		if(this.x > (this.segment.end.x + 1) * 30 || this.y > (this.segment.end.y + 1) * 30) {
-			this.segment = this.canvas.segments[this.segment.connected[1][0] - 1]; // Equal to next segment --> Either the only one or the one which leads to the shortest route to the end
+			this.segment = this.canvas.segments[this.segment.connected[1][0] - 1] || this.destroyVehicle(); // Equal to next segment --> Either the only one or the one which leads to the shortest route to the end
 			console.log(this.segment)
 		}
 	} // update()
@@ -54,6 +54,10 @@ class Vehicle {
 		}
 		ctx.drawImage(this.sprite, this.x, this.y, w, h);
 	} // draw()
+
+	destroyVehicle() {
+		
+	}
 }
 Vehicle.SPRITES = [];
 

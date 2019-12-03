@@ -15,7 +15,7 @@ class Vehicle {
 		this.CARS = ["blue", "green", "orange", "pink"];
 		for(var i in this.CARS) {
 			var TEMP_IMG = new Image();
-			TEMP_IMG.src = "sprites/cars/" + this.CARS[i] + "CarPolished.png";
+			TEMP_IMG.src = "sprites/cars/" + this.CARS[i] + "down.png";
 			Vehicle.SPRITES[i] = TEMP_IMG;
 		}
 

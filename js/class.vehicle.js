@@ -23,7 +23,7 @@ class Vehicle {
 		}
 
 		// Set sprite based on segment direction
-		this.sprite = Vehicle.SPRITES[this.segment.dir];
+		this.sprite = Vehicle.SPRITES[this.segment.dir - 1];
 	}
 
 	update() {

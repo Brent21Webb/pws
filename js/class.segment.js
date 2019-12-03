@@ -11,7 +11,7 @@ class Segment {
 
 		this.spawner = undefined;
 
-		this.dir; // 1> Goes up -- 2> Goes right -- 3> Goes down -- 4> Goes left
+		this.dir; // 1> Goes down -- 2> Goes right -- 3> Goes up -- 4> Goes left
 		this.__init();
 	} // constructor
 

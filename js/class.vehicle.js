@@ -27,8 +27,8 @@ class Vehicle {
 	}
 
 	update() {
-		this.x += this.segment.dx * (50 / this.segment.speed);
-		this.y += this.segment.dy * (50 / this.segment.speed);
+		this.x += this.segment.dx * (25 / this.segment.speed);
+		this.y += this.segment.dy * (25 / this.segment.speed);
 
 		// TODO: if car exceeds the segment length (including the connector, so length + 1 segment part (= 60px))
 	} // update()

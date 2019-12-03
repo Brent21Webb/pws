@@ -34,9 +34,30 @@ class Vehicle {
 	} // update()
 
 	draw(ctx) {
-		ctx.drawImage(this.sprite, this.x, this.y, 30, 30);
+		var w, h;
+		switch(this.segment.dir) {
+			case 1: // If goes up or down
+			case 3:
+				w = 30; h = 60;
+				break;
+			case 2: // If goes right or left
+			case 4:
+				w = 60;
+				h = 30;
+				break;
+			default:
+				console.error("Unknown direction. ");
+		}
+		ctx.drawImage(this.sprite, this.x, this.y, w, h);
 
 		// TODO: add height/length according to what direction the car is moving
 	} // draw()
 }
 Vehicle.SPRITES = [];
+
+
+
+
+
+
+

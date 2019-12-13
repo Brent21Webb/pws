@@ -35,14 +35,10 @@ class Vehicle {
 		// TODO: if car exceeds the segment length (including the connector)
 		if((this.x >= this.segment.end.x * 30 && this.segment.dir === 2) || (this.y >= this.segment.end.y * 30 && this.segment.dir === 1) || (this.x <= this.segment.end.x * 30 && this.segment.dir === 4) || (this.y <= this.segment.end.y * 30 && this.segment.dir === 3)) {
 
-
-			this.segment = this.nextSegment; // Make its new segment the next segment
-
-			console.log(this.segment)
-
 			if(this.segment.endpoint) {
 				this.destroySelf();
 			}
+			this.segment = this.nextSegment; // Make its new segment the next segment
 
 			var thisConnected = this.segment.connected[1];
 			if(thisConnected && this.canvas.segments[thisConnected[0] - 1]) {
@@ -74,6 +70,7 @@ class Vehicle {
 	} // draw()
 
 	destroySelf() {
+		console.log("I destroyed myself")
 		// thisfunctiondoesnotexist();
 	}
 }

@@ -70,8 +70,12 @@ class Vehicle {
 	} // draw()
 
 	destroySelf() {
-		console.log("I destroyed myself")
-		// thisfunctiondoesnotexist();
+		var v = this.canvas.vehicles;
+		for(var i in v) {
+			if(this.ID === v[i].ID) {
+				v.splice(i, 1);
+			}
+		}
 	}
 }
 Vehicle.SPRITES = [];

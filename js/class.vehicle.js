@@ -37,11 +37,14 @@ class Vehicle {
 
 
 			this.segment = this.nextSegment; // Make its new segment the next segment
+
+			console.log(this.segment)
+
 			if(this.segment.endpoint) {
 				this.destroySelf();
 			}
 			else if(this.canvas.segments[this.segment.ID].endpoint) {
-				this.nextSegment = undefined;
+				this.nextSegment = this.segment;
 			} else {
 				this.nextSegment = this.canvas.segments[this.segment.connected[1][0] - 1]; // get new next segment
 			}

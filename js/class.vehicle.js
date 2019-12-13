@@ -16,7 +16,7 @@ class Vehicle {
 		// Load sprite images
 		// TODO: load all four directions
 		this.DIRECTIONS = ["down", "right", "top", "left"];
-		this.COLOURS = ["blue", "green", "orange", "pink"];
+		this.COLOURS = ["pink", "green", "orange", "blue"];
 		this.colour = this.COLOURS[this.end];
 
 		for(var i in this.DIRECTIONS) {

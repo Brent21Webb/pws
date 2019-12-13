@@ -37,7 +37,10 @@ class Vehicle {
 
 
 			this.segment = this.nextSegment; // Make its new segment the next segment
-			if(this.canvas.segments[this.segment.ID].endpoint) {
+			if(this.segment.endpoint) {
+				this.destroySelf();
+			}
+			else if(this.canvas.segments[this.segment.ID].endpoint) {
 				this.nextSegment = undefined;
 			} else {
 				this.nextSegment = this.canvas.segments[this.segment.connected[1][0] - 1]; // get new next segment
@@ -67,8 +70,8 @@ class Vehicle {
 		ctx.drawImage(this.sprite, this.x, this.y, w, h);
 	} // draw()
 
-	destroyVehicle() {
-
+	destroySelf() {
+		thisfunctiondoesnotexist();
 	}
 }
 Vehicle.SPRITES = [];

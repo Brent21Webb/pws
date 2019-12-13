@@ -43,10 +43,10 @@ class Vehicle {
 			if(this.segment.endpoint) {
 				this.destroySelf();
 			}
-			else if(this.canvas.segments[this.segment.ID].endpoint) {
-				this.nextSegment = this.segment;
-			} else {
-				this.nextSegment = this.canvas.segments[this.segment.connected[1][0] - 1]; // get new next segment
+
+			var thisConnected = this.segment.connected[1];
+			if(thisConnected && this.canvas.segments[thisConnected[0] - 1]) {
+				this.nextSegment = this.canvas.segments[thisConnected[0] - 1];
 			}
 
 			this.x += (this.segment.dx ? 0 : 15);
@@ -74,7 +74,7 @@ class Vehicle {
 	} // draw()
 
 	destroySelf() {
-		thisfunctiondoesnotexist();
+		// thisfunctiondoesnotexist();
 	}
 }
 Vehicle.SPRITES = [];

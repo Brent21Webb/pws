@@ -35,13 +35,18 @@ class Vehicle {
 		// TODO: if car exceeds the segment length (including the connector)
 		if((this.x >= this.segment.end.x * 30 && this.segment.dir === 2) || (this.y >= this.segment.end.y * 30 && this.segment.dir === 1) || (this.x <= this.segment.end.x * 30 && this.segment.dir === 4) || (this.y <= this.segment.end.y * 30 && this.segment.dir === 3)) {
 
-				this.segment = this.nextSegment; // Make its new segment the next segment
-				this.nextSegment = this.canvas.segments[this.segment.connected[1][0] - 1]; // get new next segment
 
-				this.x += (this.segment.dx ? 0 : 15);
-				this.y += (this.segment.dy ? 0 : 15);
+			this.segment = this.nextSegment; // Make its new segment the next segment
+
+			if(this.canvas.segments[this.ID].endpoint) {
+				this.nextSegment = undefined;
+			} else {
+				this.nextSegment = this.canvas.segments[this.segment.connected[1][0] - 1]; // get new next segment
+			}
+
+			this.x += (this.segment.dx ? 0 : 15);
+			this.y += (this.segment.dy ? 0 : 15);
 		}
-		// }
 	} // update()
 
 	draw(ctx) {

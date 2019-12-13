@@ -28,7 +28,7 @@ class Vehicle {
 		this.x += (this.segment.dx ? this.segment.speed / 25 : 0);
 		this.y += (this.segment.dy ? this.segment.speed / 25 : 0);
 
-		// TODO: if car exceeds the segment length (including the connector, so length + 1 segment part (= 60px))
+		// TODO: if car exceeds the segment length (including the connector)
 		if((this.x >= this.segment.end.x * 30 && this.segment.dx !== 0) || (this.y >= this.segment.end.y * 30 && this.segment.dy !== 0)) {
 			this.segment = this.canvas.segments[this.segment.connected[1][0] - 1]; // Equal to next segment --> Either the only one or the one which leads to the shortest route to the end
 			this.x += (this.segment.dx ? 0 : 15);

@@ -35,7 +35,7 @@ class Canvas {
 		for(var i in this.segments) {
 			var s = this.segments[i];
 			ids.push(s.ID);
-			if(s.connected[0]) {
+			if(s.connected[0] >= 0) {
 				for(var i in s.connected[1]) {
 					connectedFrom.push(s.connected[1][i]);
 				}
@@ -61,7 +61,7 @@ class Canvas {
 	initEndpoints() {
 		for(var i in this.segments) {
 			var s = this.segments[i];
-			if(!s.connected[0]) {
+			if(s.connected[0] == null || s.connected[0] == undefined) {
 				s.endpoint = true;
 			}
 		}

@@ -62,7 +62,6 @@ class Canvas {
 		for(var i in this.segments) {
 			var s = this.segments[i];
 			if(!s.connected[0]) {
-				console.log("Nothing at end: " + s.ID);
 				s.endpoint = true;
 			}
 		}

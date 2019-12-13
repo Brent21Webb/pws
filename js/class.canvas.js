@@ -7,6 +7,7 @@ class Canvas {
 
 		this.segments = [];
 		this.spawners = [];
+		this.endpoints = [];
 
 		this.vehicles = [];
 
@@ -54,6 +55,16 @@ class Canvas {
 			leftwith[i].initAsSpawner();
 		}
 		this.spawners = leftwith;
+	}
+
+
+	initEndpoints() {
+		for(var i in this.segments) {
+			var s = this.segments[i];
+			if(!s.connected[0]) {
+				s.endpoint = true;
+			}
+		}
 	}
 
 

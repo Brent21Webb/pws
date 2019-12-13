@@ -10,6 +10,7 @@ class Segment {
 		this.canvas = canvas;
 
 		this.spawner = undefined;
+		this.endpoint = false;
 
 		this.dir; // 1> Goes down -- 2> Goes right -- 3> Goes up -- 4> Goes left
 		this.__init();
@@ -56,9 +57,10 @@ class Segment {
 
 
 	spawn(x) {
-		if(x >= 5) {
-			this.canvas.vehicles.push(new Vehicle(this.canvas, this, 3));
-			console.log("Spawn");
+		if(x && !this.canvas.vehicles[0]) {
+			var v = new Vehicle(this.canvas, this, 0);
+			this.canvas.vehicles.push(v);
+			console.log(v);
 		}
 		else {
 			console.log("No spawn");

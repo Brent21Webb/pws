@@ -2,10 +2,12 @@ class Vehicle {
 	constructor(canvas, segment, end) {
 		this.canvas = canvas;
 		this.segment = segment;
+		this.nextSegment = undefined;
 		this.x = this.segment.begin.x * 30 + (this.segment.dx ? 0 : 15);
 		this.y = this.segment.begin.y * 30 + (this.segment.dy ? 0 : 15);
 		this.end = end;
 		this.sprite = undefined;
+		this.ID = Vehicle.ID++;
 
 		this.__init();
 	}
@@ -14,7 +16,7 @@ class Vehicle {
 		// Load sprite images
 		// TODO: load all four directions
 		this.DIRECTIONS = ["down", "right", "top", "left"];
-		this.COLOURS = ["blue", "green", "orange", "pink"];
+		this.COLOURS = ["pink", "green", "orange", "blue"];
 		this.colour = this.COLOURS[this.end];
 
 		for(var i in this.DIRECTIONS) {
@@ -22,15 +24,27 @@ class Vehicle {
 			TEMP_IMG.src = "sprites/cars/" + this.colour + "/" + this.DIRECTIONS[i] + ".png";
 			Vehicle.SPRITES[i] = TEMP_IMG;
 		}
+
+		this.nextSegment = this.canvas.segments[this.segment.connected[1][0] - 1];
 	}
 
 	update() {
-		this.x += (this.segment.dx ? this.segment.speed / 25 : 0);
-		this.y += (this.segment.dy ? this.segment.speed / 25 : 0);
+		this.x += (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);
+		this.y += (this.segment.dy ? this.segment.speed / 25 : 0) * (this.segment.dir === 1 ? 1 : -1);
 
-		// TODO: if car exceeds the segment length (including the connector, so length + 1 segment part (= 60px))
-		if((this.x >= this.segment.end.x * 30 && this.segment.dx !== 0) || (this.y >= this.segment.end.y * 30 && this.segment.dy !== 0)) {
-			this.segment = this.canvas.segments[this.segment.connected[1][0] - 1]; // Equal to next segment --> Either the only one or the one which leads to the shortest route to the end
+		// TODO: if car exceeds the segment length (including the connector)
+		if((this.x >= this.segment.end.x * 30 && this.segment.dir === 2) || (this.y >= this.segment.end.y * 30 && this.segment.dir === 1) || (this.x <= this.segment.end.x * 30 && this.segment.dir === 4) || (this.y <= this.segment.end.y * 30 && this.segment.dir === 3)) {
+
+			if(this.segment.endpoint) {
+				this.destroySelf();
+			}
+			this.segment = this.nextSegment; // Make its new segment the next segment
+
+			var thisConnected = this.segment.connected[1];
+			if(thisConnected && this.canvas.segments[thisConnected[0] - 1]) {
+				this.nextSegment = this.canvas.segments[thisConnected[0] - 1];
+			}
+
 			this.x += (this.segment.dx ? 0 : 15);
 			this.y += (this.segment.dy ? 0 : 15);
 		}
@@ -55,11 +69,17 @@ class Vehicle {
 		ctx.drawImage(this.sprite, this.x, this.y, w, h);
 	} // draw()
 
-	destroyVehicle() {
-
+	destroySelf() {
+		var v = this.canvas.vehicles;
+		for(var i in v) {
+			if(this.ID === v[i].ID) {
+				v.splice(i, 1);
+			}
+		}
 	}
 }
 Vehicle.SPRITES = [];
+Vehicle.ID = 1;
 
 
 

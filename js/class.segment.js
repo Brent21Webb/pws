@@ -57,7 +57,7 @@ class Segment {
 
 	spawn(x) {
 		if(x && !this.canvas.vehicles[0]) {
-			var v = new Vehicle(this.canvas, this, 3);
+			var v = new Vehicle(this.canvas, this, 0);
 			this.canvas.vehicles.push(v);
 			console.log(v);
 		}

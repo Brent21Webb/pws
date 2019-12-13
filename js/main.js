@@ -25,6 +25,7 @@ var seg5 = new Segment(new Vector(5, 11), new Vector(5, 3), 50, [], canvas);
 
 
 canvas.initSegmentSpawning();
+canvas.initEndpoints();
 
 // console.log(seg1.ID);
 console.log(canvas.segments);

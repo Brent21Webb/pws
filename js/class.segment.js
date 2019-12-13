@@ -10,6 +10,7 @@ class Segment {
 		this.canvas = canvas;
 
 		this.spawner = undefined;
+		this.endpoint = false;
 
 		this.dir; // 1> Goes down -- 2> Goes right -- 3> Goes up -- 4> Goes left
 		this.__init();

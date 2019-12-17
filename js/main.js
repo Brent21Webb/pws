@@ -19,11 +19,7 @@ var seg6 = new Segment(new Vector(15, 13), new Vector(15, 16), 50, [], canvas);
 
 
 // TODO: vehicles disappear for 1 frame when new vehicle spawns
-// TODO: vehicles crash when entering segment 4
-
-// TODO: make a segment with multiple exit points
-// TODO: make all of this more efficient => Gets slow really quick
-
+// TODO: make a segment with multiple exit points => Done, now get them to move in different directions
 
 canvas.initSegmentSpawning();
 canvas.initEndpoints();

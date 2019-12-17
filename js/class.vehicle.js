@@ -13,8 +13,7 @@ class Vehicle {
 	}
 
 	__init() {
-		// Load sprite images
-		// TODO: load all four directions
+		// Load sprite images ==> All colours, all directions
 		this.DIRECTIONS = ["down", "right", "top", "left"];
 		this.COLOURS = ["pink", "green", "orange", "blue"];
 		this.colour = this.COLOURS[this.end];
@@ -29,22 +28,25 @@ class Vehicle {
 	}
 
 	update() {
+		// Calculate the next x position using the segment's direction and speed
 		this.x += (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);
 		this.y += (this.segment.dy ? this.segment.speed / 25 : 0) * (this.segment.dir === 1 ? 1 : -1);
 
-		// TODO: if car exceeds the segment length (including the connector)
+		// If the car is past the segment
 		if((this.x >= this.segment.end.x * 30 && this.segment.dir === 2) || (this.y >= this.segment.end.y * 30 && this.segment.dir === 1) || (this.x <= this.segment.end.x * 30 && this.segment.dir === 4) || (this.y <= this.segment.end.y * 30 && this.segment.dir === 3)) {
 
 			if(this.segment.endpoint) {
 				this.destroySelf();
 			}
-			this.segment = this.nextSegment; // Make its new segment the next segment
-
-			var thisConnected = this.segment.connected[1];
+			this.segment = this.nextSegment; // Make its new segment the next segment...
+	
+			// ...and find the new nextSegment
+			var thisConnected = this.segment.connected[1]; 
 			if(thisConnected && this.canvas.segments[thisConnected[0] - 1]) {
 				this.nextSegment = this.canvas.segments[thisConnected[0] - 1];
 			}
-
+			
+			// Adjust vehicle 15px up/down/right/left to drive in the center of the road
 			this.x += (this.segment.dx ? 0 : 15);
 			this.y += (this.segment.dy ? 0 : 15);
 		}
@@ -70,14 +72,15 @@ class Vehicle {
 	} // draw()
 
 	destroySelf() {
+		// Find the vehicle array
 		var v = this.canvas.vehicles;
-		for(var i in v) {
-			if(this.ID === v[i].ID) {
-				v.splice(i, 1);
+		for(var i in v) { // For every vehicle
+			if(this.ID === v[i].ID) { // If its ID matches this vehicle's ID...
+				v.splice(i, 1); // ...remove it from the array
 			}
 		}
-	}
-}
+	} // destroySelf();
+} // class Vehicle
 Vehicle.SPRITES = [];
 Vehicle.ID = 1;
 

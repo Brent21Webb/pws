@@ -47,8 +47,8 @@ class Vehicle {
 			}
 			
 			// Adjust vehicle 15px up/down/right/left to drive in the center of the road
-			this.x += (this.segment.dx ? 0 : 15);
-			this.y += (this.segment.dy ? 0 : 15);
+			this.x += (this.segment.dx ? 0 : 15) * (this.segment.dir >= 3 ? -1 : 1);
+			this.y += (this.segment.dy ? 0 : 15) * (this.segment.dir >= 3 ? -1 : 1);
 		}
 	} // update()
 

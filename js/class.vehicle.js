@@ -46,9 +46,17 @@ class Vehicle {
 				this.nextSegment = this.canvas.segments[thisConnected[0] - 1];
 			}
 			
-			// Adjust vehicle 15px up/down/right/left to drive in the center of the road
-			this.x += (this.segment.dx ? 0 : 15) * (this.segment.dir >= 3 ? -1 : 1);
-			this.y += (this.segment.dy ? 0 : 15) * (this.segment.dir >= 3 ? -1 : 1);
+			// Calculate dx/dy for positioning the vehicle after the segment change
+			let dx = 15 * (this.segment.dir % 2 === 0 ? 0 : 1);
+			let dy = 15 * (this.segment.dir % 2 === 1 ? 0 : 1);
+
+			// Forced is used for the negative x/y drawing values 
+			let forcedDX = 20 * (this.segment.dir === 4 ? -1 : 0);
+			let forcedDY = 30 * (this.segment.dir === 3 ? -1 : 0);
+			
+			// Adjust vehicle up/down/right/left to drive in the center of the road, based on the calculations made before the segment changed
+			this.x += dx + forcedDX;
+			this.y += dy + forcedDY;
 		}
 	} // update()
 

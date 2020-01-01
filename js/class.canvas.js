@@ -64,6 +64,7 @@ class Canvas {
 			var s = this.segments[i];
 			if(s.connected[0] == null || s.connected[0] == undefined) {
 				s.endpoint = true;
+				ends.push(s);
 			}
 		}
 		this.endpoints = ends;

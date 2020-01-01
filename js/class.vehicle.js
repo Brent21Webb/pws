@@ -95,6 +95,7 @@ class Vehicle {
 		}
 	} // destroySelf();
 } // class Vehicle
+
 Vehicle.SPRITES = [];
 Vehicle.ID = 1;
 

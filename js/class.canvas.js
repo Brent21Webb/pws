@@ -59,12 +59,14 @@ class Canvas {
 
 
 	initEndpoints() {
+		var ends = [];
 		for(var i in this.segments) {
 			var s = this.segments[i];
 			if(s.connected[0] == null || s.connected[0] == undefined) {
 				s.endpoint = true;
 			}
 		}
+		this.endpoints = ends;
 	}
 
 

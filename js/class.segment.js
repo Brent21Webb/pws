@@ -1,12 +1,13 @@
 class Segment {
-	//         Vector Vector Int array (ID, conn) Canvas
- 	constructor(begin, end, speed, connected, canvas) {
+	//         Vector Vector Int array (ID, conn), bool, Canvas
+ 	constructor(begin, end, speed, connected, visible, canvas) {
 		this.begin = begin;
 		this.end = end;
 		this.dx = this.end.x - this.begin.x;
 		this.dy = this.end.y - this.begin.y;
 		this.speed = speed;
 		this.connected = connected;
+		this.isVisible = visible;
 		this.canvas = canvas;
 
 		this.spawner = undefined;
@@ -69,6 +70,7 @@ class Segment {
 
 
 	draw(ctx) {
+		if(!this.isVisible) { return false; }
 		// Calculate the correction and maximum
 		const corr = (this.dir >= 3 ? -1 : 1);
 		var max = (this.dx || this.dy) * corr;

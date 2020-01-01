@@ -25,6 +25,7 @@ class Vehicle {
 		}
 
 		this.nextSegment = this.canvas.segments[this.segment.connected[1][0] - 1];
+		console.log(this.canvas.endpoints);
 	}
 
 	update() {

@@ -1,11 +1,11 @@
 class Vehicle {
-	constructor(canvas, segment, end) {
+	constructor(canvas, segment) {
 		this.canvas = canvas;
 		this.segment = segment;
 		this.nextSegment = undefined;
 		this.x = this.segment.begin.x * 30 + (this.segment.dx ? 0 : 15);
 		this.y = this.segment.begin.y * 30 + (this.segment.dy ? 0 : 15);
-		this.end = end;
+		this.end = undefined;
 		this.sprite = undefined;
 		this.ID = Vehicle.ID++;
 
@@ -16,7 +16,10 @@ class Vehicle {
 		// Load sprite images ==> All colours, all directions
 		this.DIRECTIONS = ["down", "right", "top", "left"];
 		this.COLOURS = ["pink", "green", "orange", "blue"];
-		this.colour = this.COLOURS[this.end];
+
+		var end = Math.floor(Math.random() * this.canvas.endpoints.length);
+		this.end = this.canvas.endpoints[end];
+		this.colour = this.COLOURS[end];
 
 		for(var i in this.DIRECTIONS) {
 			var TEMP_IMG = new Image();
@@ -25,7 +28,6 @@ class Vehicle {
 		}
 
 		this.nextSegment = this.canvas.segments[this.segment.connected[1][0] - 1];
-		console.log(this.canvas.endpoints);
 	}
 
 	update() {

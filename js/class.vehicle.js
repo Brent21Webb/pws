@@ -42,7 +42,7 @@ class Vehicle {
 				this.destroySelf();
 			}
 
-			var olddir = this.segment.dir
+			var olddir = this.segment.dir;
 			this.segment = this.nextSegment; // Make its new segment the next segment...
 
 			// ...and find the new nextSegment

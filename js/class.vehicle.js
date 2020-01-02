@@ -7,6 +7,7 @@ class Vehicle {
 		this.y = this.segment.begin.y * 30 + (this.segment.dy ? 0 : 15);
 		this.end = undefined;
 		this.sprite = undefined;
+		this.SPRITES = [];
 		this.ID = Vehicle.ID++;
 
 		this.__init();
@@ -24,7 +25,7 @@ class Vehicle {
 		for(var i in this.DIRECTIONS) {
 			var TEMP_IMG = new Image();
 			TEMP_IMG.src = "sprites/cars/" + this.colour + "/" + this.DIRECTIONS[i] + ".png";
-			Vehicle.SPRITES[i] = TEMP_IMG;
+			this.SPRITES[i] = TEMP_IMG;
 		}
 
 		this.nextSegment = this.canvas.segments[this.segment.connected[1][0] - 1];
@@ -68,7 +69,7 @@ class Vehicle {
 
 	draw(ctx) {
 		// Set sprite based on segment direction
-		this.sprite = Vehicle.SPRITES[this.segment.dir - 1];
+		this.sprite = this.SPRITES[this.segment.dir - 1];
 		var w, h;
 		switch(this.segment.dir) {
 			case 1: // If goes up or down
@@ -96,7 +97,6 @@ class Vehicle {
 	} // destroySelf();
 } // class Vehicle
 
-Vehicle.SPRITES = [];
 Vehicle.ID = 1;
 
 

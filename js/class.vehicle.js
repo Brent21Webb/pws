@@ -31,13 +31,19 @@ class Vehicle {
 		this.nextSegment = this.canvas.segments[this.segment.connected[1][0] - 1];
 	}
 
+
+	isPastPoint(x, y) {
+		return (this.x >= x * 30 && this.segment.dir === 2) || (this.y >= y * 30 && this.segment.dir === 1) || (this.x <= x * 30 && this.segment.dir === 4) || (this.y <= y * 30 && this.segment.dir === 3);
+	}
+
+
 	update() {
 		// Calculate the next x position using the segment's direction and speed
 		this.x += (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);
 		this.y += (this.segment.dy ? this.segment.speed / 25 : 0) * (this.segment.dir === 1 ? 1 : -1);
 
 		// If the car is past the segment
-		if((this.x >= this.segment.end.x * 30 && this.segment.dir === 2) || (this.y >= this.segment.end.y * 30 && this.segment.dir === 1) || (this.x <= this.segment.end.x * 30 && this.segment.dir === 4) || (this.y <= this.segment.end.y * 30 && this.segment.dir === 3)) {
+		if(this.isPastPoint(this.segment.end.x, this.segment.end.y)) {
 
 			if(this.segment.endpoint) {
 				this.destroySelf();
@@ -65,6 +71,10 @@ class Vehicle {
 			this.x += dx + forcedDX;
 			this.y += dy + forcedDY;
 		}
+		// Else, if the car is one square from being past the segment (so right in front of the intersection)
+		// else if(this.x >= (this.segment.end.x - 1) * 30) {
+		//
+		// }
 	} // update()
 
 	draw(ctx) {

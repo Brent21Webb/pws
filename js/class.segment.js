@@ -89,10 +89,10 @@ class Segment {
 			ctx.drawImage(this.sprite, x, y, w, h);
 
 			// White square on end vector
-			ctx.fillStyle = "#FFF";
-			var tx = this.end.x * 30 + (25 * (this.dir % 2)) - (10 * (1 - this.dir % 2));
-			var ty = this.end.y * 30 + (25 * (1 - this.dir % 2)) - (10 * (this.dir % 2));
-			ctx.fillRect(tx, ty, 10, 10);
+			// ctx.fillStyle = "#FFF";
+			// var tx = this.end.x * 30 + (25 * (this.dir % 2)) - (10 * (1 - this.dir % 2));
+			// var ty = this.end.y * 30 + (25 * (1 - this.dir % 2)) - (10 * (this.dir % 2));
+			// ctx.fillRect(tx, ty, 10, 10);
 		} // for i
 
 		// Draw the road connections

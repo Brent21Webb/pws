@@ -74,7 +74,7 @@ class Vehicle {
 			// Calculate dx/dy for positioning the vehicle after the segment change
 			let dx = 15 * (this.segment.dir % 2 === 0 ? 0 : 1) * (olddir == this.segment.dir ? 0 : 1);
 			let dy = 15 * (this.segment.dir % 2 === 1 ? 0 : 1) * (olddir == this.segment.dir ? 0 : 1);
-
+			
 			// Forced is used for the negative x/y drawing values
 			let forcedDX = 30 * (this.segment.dir === 4 ? -1 : 0);
 			let forcedDY = 30 * (this.segment.dir === 3 ? -1 : 0);

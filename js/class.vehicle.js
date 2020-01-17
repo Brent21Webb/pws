@@ -48,10 +48,12 @@ class Vehicle {
 	update() {
 		let ex = this.segment.end.x;
 		let ey = this.segment.end.y;
+		let pastpointCorr = (this.segment.dir >= 3 ? -1 : 1);
 
-		html.innerHTML = ex + " - " + ey + " (" + ex * 30 + " - " + ey * 30 + ")<br>";
-		html.innerHTML += this.x + " - " + this.y + "<br>";
-		html.innerHTML += this.isPastPoint(ex - 3, ey - 3) + "<br>";
+		html.innerHTML = "End: " + ex + " - " + ey + " (" + ex * 30 + " - " + ey * 30 + ")<br>";
+		html.innerHTML += "Vehicle: " + this.x + " - " + this.y + "<br>";
+		html.innerHTML += "isPastPoint - 3: " + this.isPastPoint(ex - 3 * pastpointCorr, ey - 3 * pastpointCorr) + "<br>";
+		html.innerHTML += "Correction: " + pastpointCorr + "<br>";
 
 		// Calculate the next x position using the segment's direction and speed
 		this.x += (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);
@@ -59,7 +61,9 @@ class Vehicle {
 
 		// If the car is past the segment
 		if(this.isPastPoint(ex, ey)) {
+
 			console.log("Passed it");
+
 			if(this.segment.endpoint) {
 				this.destroySelf();
 			}
@@ -79,7 +83,7 @@ class Vehicle {
 			let dy = 15 * (this.segment.dir % 2 === 1 ? 0 : 1) * (olddir == this.segment.dir ? 0 : 1);
 
 			// Forced is used for the negative x/y drawing values
-			let forcedDX = 30 * (this.segment.dir === 4 ? -1 : 0);
+			let forcedDX = 20 * (this.segment.dir === 4 ? -1 : 0);
 			let forcedDY = 30 * (this.segment.dir === 3 ? -1 : 0);
 
 			// Adjust vehicle up/down/right/left to drive in the center of the road, based on the calculations made before the segment changed
@@ -91,7 +95,7 @@ class Vehicle {
 		// 	this.applyTrafficRules();
 		// }
 
-		else if(this.isPastPoint(ex - 3, ey - 3)) {
+		else if(this.isPastPoint(ex - 3 * pastpointCorr, ey - 3 * pastpointCorr)) {
 			this.applyTrafficRules();
 		}
 	} // update()

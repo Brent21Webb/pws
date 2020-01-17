@@ -29,6 +29,9 @@ class Vehicle {
 		}
 
 		this.nextSegment = this.canvas.segments[this.segment.connected[1][0] - 1];
+		let xCorr = (this.segment.dir === 4 ? -60 : 0);
+		let yCorr = (this.segment.dir === 3 ? -60 : 0);
+		this.x += xCorr; this.y += yCorr;
 	}
 
 
@@ -110,6 +113,8 @@ class Vehicle {
 				console.error("Unknown direction. ");
 		}
 		ctx.drawImage(this.sprite, this.x, this.y, w, h);
+		ctx.fillStyle = "#FFF";
+		ctx.fillRect(this.x, this.y, 5, 5);
 	} // draw()
 
 	destroySelf() {

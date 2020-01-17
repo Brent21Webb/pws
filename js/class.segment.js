@@ -58,7 +58,7 @@ class Segment {
 
 
 	spawn(x) {
-		if(x && !this.canvas.vehicles[0] && this.ID === 6) {
+		if(x && !this.canvas.vehicles[0] && this.ID === 8) {
 		// if(x > 3) {
 			var v = new Vehicle(this.canvas, this);
 			this.canvas.vehicles.push(v);
@@ -87,12 +87,6 @@ class Segment {
 			var h = (this.dir % 2 === 0 ? 60 : 30);
 
 			ctx.drawImage(this.sprite, x, y, w, h);
-
-			// White square on end vector
-			// ctx.fillStyle = "#FFF";
-			// var tx = this.end.x * 30 + (25 * (this.dir % 2)) - (10 * (1 - this.dir % 2));
-			// var ty = this.end.y * 30 + (25 * (1 - this.dir % 2)) - (10 * (this.dir % 2));
-			// ctx.fillRect(tx, ty, 10, 10);
 		} // for i
 
 		// Draw the road connections

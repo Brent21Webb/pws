@@ -47,7 +47,7 @@ class Vehicle {
 
 	update() {
 		let ex = this.segment.end.x;
-		let ey = this.segment.end.y + (this.segment.dir === 3 ? -2 : 0);
+		let ey = this.segment.end.y + (this.segment.dir === 3 ? -2 : 0) * (this.segment.connected[0] === 6 ? 1 : 0);
 		let pastpointCorr = (this.segment.dir >= 3 ? -1 : 1);
 
 		html.innerHTML = "End: " + ex + " - " + ey + " (" + ex * 30 + " - " + ey * 30 + ")<br>";

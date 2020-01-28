@@ -17,7 +17,7 @@ var s1 = new Segment(new Vector(2, 2), new Vector(2, 16), 50, [1, [2]], true, ca
 var s2 = new Segment(new Vector(4, 16), new Vector(16, 16), 50, [0, [8]], true, canvas);
 
 var s3 = new Segment(new Vector(6, 2), new Vector(16, 2), 50, [3, [4]], true, canvas);
-var s4 = new Segment(new Vector(16, 4), new Vector(16, 6), 50, [0, [5]], true, canvas);
+var s4 = new Segment(new Vector(16, 4), new Vector(16, 6), 50, [0, [5, 6]], true, canvas);
 var s5 = new Segment(new Vector(16, 8), new Vector(16, 16), 50, [6, [8]], true, canvas);
 
 var s6 = new Segment(new Vector(18, 6), new Vector(22, 6), 50, [3, [7]], true, canvas);

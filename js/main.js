@@ -30,10 +30,10 @@ var s10 = new Segment(new Vector(26, 20), new Vector(26, 28), 50, [4, [11]], tru
 var s11 = new Segment(new Vector(26, 28), new Vector(16, 28), 50, [1, [12]], true, canvas); // Bottom right to bottom mid
 var s12 = new Segment(new Vector(16, 28), new Vector(16, 18), 50, [6, [9]], true, canvas); // Bottom mid to mid
 
-var s13 = new Segment(new Vector(8, 16), new Vector(8, 6), 50, [2, [14]], true, canvas); // Mid left to top left
+var s13 = new Segment(new Vector(8, 16), new Vector(8, 6), 50, [2, [14]], true, canvas); // More left to top left
 var s14 = new Segment(new Vector(10, 6), new Vector(16, 6), 50, [6, [6]], true, canvas); // Top left to top mid
 
-var s15 = new Segment(new Vector(8, 28), new Vector(8, 18), 50, [6, [3]], true, canvas); // Bottom left to mid left
+var s15 = new Segment(new Vector(8, 28), new Vector(8, 18), 50, [6, [13, 3]], true, canvas); // Bottom left to mid left
 
 // TODO: vehicles disappear for 1 frame when new vehicle spawns
 // TODO: make a segment with multiple exit points => Done, now get them to move in different directions

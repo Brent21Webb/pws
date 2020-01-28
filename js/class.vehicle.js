@@ -79,12 +79,13 @@ class Vehicle {
 			}
 
 			// Calculate dx/dy for positioning the vehicle after the segment change
-			let dx = 15 * (this.segment.dir % 2 === 0 ? 0 : 1) * (olddir == this.segment.dir ? 0 : 1);
-			let dy = 15 * (this.segment.dir % 2 === 1 ? 0 : 1) * (olddir == this.segment.dir ? 0 : 1);
+			var olddircorr = (olddir == this.segment.dir ? 0 : 1);
+			let dx = 15 * (this.segment.dir % 2 === 0 ? 0 : 1) * olddircorr;
+			let dy = 15 * (this.segment.dir % 2 === 1 ? 0 : 1) * olddircorr;
 
 			// Forced is used for the negative x/y drawing values
-			let forcedDX = 20 * (this.segment.dir === 4 ? -1 : 0);
-			let forcedDY = 30 * (this.segment.dir === 3 ? -1 : 0);
+			let forcedDX = 20 * (this.segment.dir === 4 ? -1 : 0) * olddircorr;
+			let forcedDY = 30 * (this.segment.dir === 3 ? -1 : 0) * olddircorr;
 
 			// Adjust vehicle up/down/right/left to drive in the center of the road, based on the calculations made before the segment changed
 			this.x += dx + forcedDX;

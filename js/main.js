@@ -14,8 +14,8 @@ var html = geti("data");
 var canvas = new Canvas(930, 930, "#A2C969", geti("map"));
 
 var s1 = new Segment(new Vector(2, 2), new Vector(2, 16), 50, [1, [2]], true, canvas); // Top left to mid left
-var s2 = new Segment(new Vector(4, 16), new Vector(8, 16), 50, [0, [13, 3]], true, canvas); // Mid left to center
-var s3 = new Segment(new Vector(10, 16), new Vector(16, 16), 50, [0, [9]], true, canvas);
+var s2 = new Segment(new Vector(4, 16), new Vector(8, 16), 50, [0, [13, 3]], true, canvas); // Mid left to more left
+var s3 = new Segment(new Vector(10, 16), new Vector(16, 16), 50, [0, [9]], true, canvas); // More left to center
 
 var s4 = new Segment(new Vector(6, 2), new Vector(16, 2), 50, [3, [5]], true, canvas); // Top left to top mid
 var s5 = new Segment(new Vector(16, 4), new Vector(16, 6), 50, [0, [6, 7]], true, canvas); // Top mid to two down
@@ -32,6 +32,8 @@ var s12 = new Segment(new Vector(16, 28), new Vector(16, 18), 50, [6, [9]], true
 
 var s13 = new Segment(new Vector(8, 16), new Vector(8, 6), 50, [2, [14]], true, canvas); // Mid left to top left
 var s14 = new Segment(new Vector(10, 6), new Vector(16, 6), 50, [6, [6]], true, canvas); // Top left to top mid
+
+var s15 = new Segment(new Vector(8, 28), new Vector(8, 18), 50, [6, [3]], true, canvas); // Bottom left to mid left
 
 // TODO: vehicles disappear for 1 frame when new vehicle spawns
 // TODO: make a segment with multiple exit points => Done, now get them to move in different directions

@@ -14,16 +14,20 @@ var html = geti("data");
 var canvas = new Canvas(930, 930, "#A2C969", geti("map"));
 
 var s1 = new Segment(new Vector(2, 2), new Vector(2, 16), 50, [1, [2]], true, canvas);
-var s2 = new Segment(new Vector(4, 16), new Vector(16, 16), 50, [0, [5]], true, canvas);
+var s2 = new Segment(new Vector(4, 16), new Vector(16, 16), 50, [0, [8]], true, canvas);
 
 var s3 = new Segment(new Vector(6, 2), new Vector(16, 2), 50, [3, [4]], true, canvas);
-var s4 = new Segment(new Vector(16, 4), new Vector(16, 16), 50, [6, [5]], true, canvas);
+var s4 = new Segment(new Vector(16, 4), new Vector(16, 6), 50, [0, [5]], true, canvas);
+var s5 = new Segment(new Vector(16, 8), new Vector(16, 16), 50, [6, [8]], true, canvas);
 
-var s5 = new Segment(new Vector(18, 16), new Vector(22, 16), 50, [6, []], true, canvas);
+var s6 = new Segment(new Vector(18, 6), new Vector(22, 6), 50, [3, [7]], true, canvas);
+var s7 = new Segment(new Vector(22, 8), new Vector(22, 12), 50, [5, []], true, canvas);
 
-var s6 = new Segment(new Vector(16, 28), new Vector(16, 18), 50, [6, [5]], true, canvas);
-var s7 = new Segment(new Vector(26, 28), new Vector(16, 28), 50, [1, [6]], true, canvas);
-var s8 = new Segment(new Vector(26, 20), new Vector(26, 28), 50, [4, [7]], true, canvas);
+var s8 = new Segment(new Vector(18, 16), new Vector(22, 16), 50, [5, []], true, canvas);
+
+var s9 = new Segment(new Vector(16, 28), new Vector(16, 18), 50, [6, [10]], true, canvas);
+var s10 = new Segment(new Vector(26, 28), new Vector(16, 28), 50, [1, [11]], true, canvas);
+var s11 = new Segment(new Vector(26, 20), new Vector(26, 28), 50, [4, [8]], true, canvas);
 
 // TODO: vehicles disappear for 1 frame when new vehicle spawns
 // TODO: make a segment with multiple exit points => Done, now get them to move in different directions

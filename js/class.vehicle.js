@@ -79,7 +79,7 @@ class Vehicle {
 			// ...and find the new nextSegment
 			var thisConnected = this.segment.connected[1];
 			console.log(thisConnected)
-			console.log(thisConnected[this.route[this.nav++]]);
+			// console.log(thisConnected[]);
 			if(thisConnected && this.canvas.segments[thisConnected[0] - 1]) {
 				var n = thisConnected.length - 1; n = 0;
 				this.nextSegment = this.canvas.segments[thisConnected[n] - 1];

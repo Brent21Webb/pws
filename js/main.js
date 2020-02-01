@@ -9,7 +9,7 @@ function timeDiff(t1, t2) {
 
 var html = geti("data");
 
-const routes = {
+const ROUTES = {
 	one: [[0,0,0], [0,1,0,0,0], [0,1,0,1,0]],
 	three: [[], [], []],
 	ten: [[], [], []],

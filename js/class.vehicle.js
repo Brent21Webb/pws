@@ -23,7 +23,7 @@ class Vehicle {
 		this.colour = this.COLOURS[end];
 
 		if(this.segment.spawner) {
-			this.route = routes[this.segment.ID][end];
+			this.route = ROUTES[this.segment.ID][end];
 			console.log(this.route);
 		}
 

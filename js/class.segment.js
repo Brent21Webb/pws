@@ -63,7 +63,6 @@ class Segment {
 		// if(x > 3) {
 			var v = new Vehicle(this.canvas, this);
 			this.canvas.vehicles.push(v);
-			console.log(v);
 		}
 		else {
 			console.log("No spawn");

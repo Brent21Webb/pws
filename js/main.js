@@ -10,10 +10,9 @@ function timeDiff(t1, t2) {
 var html = geti("data");
 
 const ROUTES = {
-	1: [[0,0,0], [0,1,0,1,0]],
-	3: [[], [], []],
-	10: [[], [], []],
-	15: [[], [], []]
+	1:  [[0,0,0], [0,1,0,1,0]],
+	4:  [[0,0,0], [0,1,0]],
+	10: [[0,1,0], [0,0,0,0,0,1,0]]
 };
 
 
@@ -34,7 +33,7 @@ const s8 = new Segment(new Vector(22, 8), new Vector(22, 12), 50, [5, []], true,
 const s9 = new Segment(new Vector(18, 16), new Vector(22, 16), 50, [5, []], true, canvas); // Center to mid right
 
 const s10 = new Segment(new Vector(26, 20), new Vector(26, 28), 50, [4, [11]], true, canvas); // Mid right to bottom right
-const s11 = new Segment(new Vector(26, 28), new Vector(16, 28), 50, [5, [16, 12]], true, canvas); // Bottom right to bottom mid
+const s11 = new Segment(new Vector(26, 28), new Vector(16, 28), 50, [0, [16, 12]], true, canvas); // Bottom right to bottom mid
 const s12 = new Segment(new Vector(16, 28), new Vector(16, 18), 50, [6, [9]], true, canvas); // Bottom mid to mid
 
 const s13 = new Segment(new Vector(8, 16), new Vector(8, 6), 50, [2, [14]], true, canvas); // More left to top left

@@ -76,6 +76,21 @@ class Vehicle {
 				this.destroySelf();
 			}
 
+
+			/*
+			var olddir = this.segment.dir;
+			this.segment = this.nextSegment; // Make its new segment the next segment...
+
+			// ...and find the new nextSegment
+			var thisConnected = this.segment.connected[1];
+			console.log(thisConnected)
+			// console.log(thisConnected[]);
+			if(thisConnected && this.canvas.segments[thisConnected[0] - 1]) {
+				var n = thisConnected.length - 1; n = 0;
+				this.nextSegment = this.canvas.segments[thisConnected[n] - 1];
+			}
+			*/
+
 			var olddir = this.segment.dir; // Save the current direction...
 			var thisConnected = this.segment.connected[1]; // ...and find the connected segments
 

@@ -78,7 +78,7 @@ class Vehicle {
 			var olddir = this.segment.dir; // Save the current direction...
 			var thisConnected = this.segment.connected[1]; // ...and find the connected segments
 
-			console.group("Before switching segments");
+			console.groupCollapsed("Before switching segments");
 
 			console.log("This segment is connected to " + thisConnected);
 			console.log("The route is " + this.route);
@@ -86,6 +86,7 @@ class Vehicle {
 			console.log("Segment end: " + ex + "x" + ey);
 			console.log("Location: " + this.x + "x" + this.y);
 			console.log(this.nextSegment);
+			console.log("Next ID: " + this.nextSegment.ID);
 
 			console.groupEnd();
 
@@ -97,8 +98,11 @@ class Vehicle {
 				var n = 0;
 				n = this.route[this.nav++];
 
-				console.group("Switching segments");
-				console.log("n (this.route[this.nav++]): " + n);
+				console.groupCollapsed("Switching segments");
+				console.log("Route: " + this.route);
+				console.log("nav: " + (this.nav - 1));
+				console.log("n (= this.route[this.nav++]): " + n);
+				console.log("thisConnected: " + thisConnected);
 				console.log("thisConnected[n]: " + thisConnected[n]);
 				console.log("Segment ID: " + this.canvas.segments[thisConnected[n] - 1].ID);
 				console.groupEnd();

@@ -89,14 +89,21 @@ class Vehicle {
 				var n = thisConnected.length - 1; n = 0;
 				this.nextSegment = this.canvas.segments[thisConnected[n] - 1];
 			}
+
+			So basically
+			1) Switch segments
+			2) Get segments that are connected to this segment
+			3) Select new nextSegment based on nothing
+
+			I want to switch 1 and 2
 			*/
 
 			var olddir = this.segment.dir; // Save the current direction...
 			var thisConnected = this.segment.connected[1]; // ...and find the connected segments
 
-			console.groupCollapsed("Before switching segments");
+			console.group("Before switching segments");
 
-			console.log("This segment is connected to " + thisConnected);
+			console.log("This segment (" + this.segment.ID + ") is connected to " + thisConnected);
 			console.log("The route is " + this.route);
 			console.log("We're now at " + this.route[this.nav] + " (" + this.nav + ")");
 			console.log("Segment end: " + ex + "x" + ey);
@@ -114,7 +121,7 @@ class Vehicle {
 				var n = 0;
 				n = this.route[this.nav++];
 
-				console.groupCollapsed("Switching segments");
+				console.group("Switching segments");
 				console.log("Route: " + this.route);
 				console.log("nav: " + (this.nav - 1));
 				console.log("n (= this.route[this.nav++]): " + n);

@@ -22,6 +22,11 @@ class Vehicle {
 		this.end = this.canvas.endpoints[end];
 		this.colour = this.COLOURS[end];
 
+		if(this.segment.spawner) {
+			this.route = routes[this.segment.ID][end];
+			console.log(this.route);
+		}
+
 		for(var i in this.DIRECTIONS) {
 			var TEMP_IMG = new Image();
 			TEMP_IMG.src = "sprites/cars/" + this.colour + "/" + this.DIRECTIONS[i] + ".png";

@@ -55,7 +55,7 @@ class Vehicle {
 
 	update() {
 		let ex = this.segment.end.x;
-		let ey = this.segment.end.y + (this.segment.dir === 3 ? -2 : 0) * (this.segment.connected[0] === 6 ? 1 : 0);
+		let ey = this.segment.end.y;
 		let pastpointCorr = (this.segment.dir >= 3 ? -1 : 1);
 
 		html.innerHTML = "End: " + ex + " - " + ey + " (" + ex * 30 + " - " + ey * 30 + ")<br>";
@@ -75,11 +75,18 @@ class Vehicle {
 			}
 
 
-
 			// ...and find the new nextSegment
 			var thisConnected = this.segment.connected[1];
-			console.log(thisConnected)
-			// console.log(thisConnected[]);
+
+			console.group("Before switching segments");
+
+			console.log("This segment is connected to " + thisConnected);
+			console.log("The route is " + this.route);
+			console.log("We're now at " + this.route[this.nav] + "\n");
+			console.log("Segment end: " + ex + "x" + ey);
+			console.log("Location: " + this.x + "x" + this.y);
+
+			console.groupEnd();
 
 			var olddir = this.segment.dir;
 			this.segment = this.nextSegment; // Make its new segment the next segment...

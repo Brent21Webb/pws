@@ -37,6 +37,8 @@ class Vehicle {
 		let xCorr = (this.segment.dir === 4 ? -60 : 0);
 		let yCorr = (this.segment.dir === 3 ? -60 : 0);
 		this.x += xCorr; this.y += yCorr;
+
+		console.log(this);
 	}
 
 

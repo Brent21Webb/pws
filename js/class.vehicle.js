@@ -36,8 +36,6 @@ class Vehicle {
 		let xCorr = (this.segment.dir === 4 ? -60 : 0);
 		let yCorr = (this.segment.dir === 3 ? -60 : 0);
 		this.x += xCorr; this.y += yCorr;
-
-		console.log(this);
 	}
 
 
@@ -67,7 +65,6 @@ class Vehicle {
 
 		// If the car is past the segment
 		if(this.isPastPoint(ex, ey)) {
-			console.log("===========")
 			if(this.segment.endpoint) {
 				this.destroySelf();
 				return;
@@ -78,7 +75,6 @@ class Vehicle {
 			var connectedToThis = this.segment.connected[1];
 			var nextInRoute = this.route[this.nav++];
 			this.segment = this.canvas.segments[connectedToThis[nextInRoute] - 1];
-			console.log(this.segment);
 
 			// Calculate dx/dy for positioning the vehicle after the segment change
 			var olddircorr = (olddir == this.segment.dir ? 0 : 1);

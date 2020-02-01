@@ -10,6 +10,8 @@ class Vehicle {
 		this.SPRITES = [];
 		this.ID = Vehicle.ID++;
 
+		this.nav = 0;
+
 		this.__init();
 	}
 
@@ -24,7 +26,6 @@ class Vehicle {
 
 		if(this.segment.spawner) {
 			this.route = ROUTES[this.segment.ID][end];
-			console.log(this.route);
 		}
 
 		for(var i in this.DIRECTIONS) {
@@ -68,9 +69,6 @@ class Vehicle {
 
 		// If the car is past the segment
 		if(this.isPastPoint(ex, ey)) {
-
-			console.log("Passed it");
-
 			if(this.segment.endpoint) {
 				this.destroySelf();
 			}
@@ -80,6 +78,7 @@ class Vehicle {
 
 			// ...and find the new nextSegment
 			var thisConnected = this.segment.connected[1];
+			console.log(thisConnected)
 			if(thisConnected && this.canvas.segments[thisConnected[0] - 1]) {
 				var n = thisConnected.length - 1; n = 0;
 				this.nextSegment = this.canvas.segments[thisConnected[n] - 1];

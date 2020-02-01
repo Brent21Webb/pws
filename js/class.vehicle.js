@@ -76,6 +76,8 @@ class Vehicle {
 				this.destroySelf();
 			}
 
+			var olddir = this.segment.dir;
+
 
 			/*
 			var olddir = this.segment.dir;
@@ -98,40 +100,42 @@ class Vehicle {
 			I want to switch 1 and 2
 			*/
 
-			var olddir = this.segment.dir; // Save the current direction...
-			var thisConnected = this.segment.connected[1]; // ...and find the connected segments
+			
 
-			console.group("Before switching segments");
-
-			console.log("This segment (" + this.segment.ID + ") is connected to " + thisConnected);
-			console.log("The route is " + this.route);
-			console.log("We're now at " + this.route[this.nav] + " (" + this.nav + ")");
-			console.log("Segment end: " + ex + "x" + ey);
-			console.log("Location: " + this.x + "x" + this.y);
-			console.log(this.nextSegment);
-			console.log("Next ID: " + this.nextSegment.ID);
-
-			console.groupEnd();
-
-
-			this.segment = this.nextSegment; // Make its new segment the next segment...
-
-
-			if(thisConnected && this.canvas.segments[thisConnected[0] - 1]) {
-				var n = 0;
-				n = this.route[this.nav++];
-
-				console.group("Switching segments");
-				console.log("Route: " + this.route);
-				console.log("nav: " + (this.nav - 1));
-				console.log("n (= this.route[this.nav++]): " + n);
-				console.log("thisConnected: " + thisConnected);
-				console.log("thisConnected[n]: " + thisConnected[n]);
-				console.log("Segment ID: " + this.canvas.segments[thisConnected[n] - 1].ID);
-				console.groupEnd();
-
-				this.nextSegment = this.canvas.segments[thisConnected[n] - 1];
-			}
+			// var olddir = this.segment.dir; // Save the current direction...
+			// this.segment = this.nextSegment; // Make its new segment the next segment...
+			// var thisConnected = this.segment.connected[1]; // ...and find the connected segments
+			//
+			// console.group("Before switching segments");
+			//
+			// console.log("This segment (" + this.segment.ID + ") is connected to " + thisConnected);
+			// console.log("The route is " + this.route);
+			// console.log("We're now at " + this.route[this.nav] + " (" + this.nav + ")");
+			// console.log("Segment end: " + ex + "x" + ey);
+			// console.log("Location: " + this.x + "x" + this.y);
+			// console.log(this.nextSegment);
+			// console.log("Next ID: " + this.nextSegment.ID);
+			//
+			// console.groupEnd();
+			//
+			//
+			//
+			//
+			// if(thisConnected && this.canvas.segments[thisConnected[0] - 1]) {
+			// 	var n = 0;
+			// 	n = this.route[this.nav++];
+			//
+			// 	console.group("Switching segments");
+			// 	console.log("Route: " + this.route);
+			// 	console.log("nav: " + (this.nav - 1));
+			// 	console.log("n (= this.route[this.nav++]): " + n);
+			// 	console.log("thisConnected: " + thisConnected);
+			// 	console.log("thisConnected[n]: " + thisConnected[n]);
+			// 	console.log("Segment ID: " + this.canvas.segments[thisConnected[n] - 1].ID);
+			// 	console.groupEnd();
+			//
+			// 	this.nextSegment = this.canvas.segments[thisConnected[n] - 1];
+			// }
 
 			// Calculate dx/dy for positioning the vehicle after the segment change
 			var olddircorr = (olddir == this.segment.dir ? 0 : 1);

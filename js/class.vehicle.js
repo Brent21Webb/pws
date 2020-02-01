@@ -69,19 +69,26 @@ class Vehicle {
 
 		// If the car is past the segment
 		if(this.isPastPoint(ex, ey)) {
+			console.log("===========")
 			if(this.segment.endpoint) {
 				this.destroySelf();
 			}
 
-			var olddir = this.segment.dir;
-			this.segment = this.nextSegment; // Make its new segment the next segment...
+
 
 			// ...and find the new nextSegment
 			var thisConnected = this.segment.connected[1];
 			console.log(thisConnected)
 			// console.log(thisConnected[]);
+
+			var olddir = this.segment.dir;
+			this.segment = this.nextSegment; // Make its new segment the next segment...
+
+
 			if(thisConnected && this.canvas.segments[thisConnected[0] - 1]) {
-				var n = thisConnected.length - 1; n = 0;
+				var n = thisConnected.length - 1; n = 0; n = this.route[this.nav++];
+				console.log(n);
+				console.log(thisConnected[n]);
 				this.nextSegment = this.canvas.segments[thisConnected[n] - 1];
 			}
 

@@ -34,7 +34,8 @@ class Vehicle {
 			this.SPRITES[i] = TEMP_IMG;
 		}
 
-		this.nextSegment = this.canvas.segments[this.segment.connected[1][0] - 1];
+		// this.nextSegment = this.canvas.segments[this.segment.connected[1][0] - 1];
+		this.nextSegment = this.canvas.segments[this.segment.connected[1][this.route[this.nav]] - 1];
 		let xCorr = (this.segment.dir === 4 ? -60 : 0);
 		let yCorr = (this.segment.dir === 3 ? -60 : 0);
 		this.x += xCorr; this.y += yCorr;
@@ -74,6 +75,7 @@ class Vehicle {
 				this.destroySelf();
 			}
 
+			var olddir = this.segment.dir; // Save the current direction...
 
 			// ...and find the new nextSegment
 			var thisConnected = this.segment.connected[1];
@@ -82,13 +84,14 @@ class Vehicle {
 
 			console.log("This segment is connected to " + thisConnected);
 			console.log("The route is " + this.route);
-			console.log("We're now at " + this.route[this.nav] + "\n");
+			console.log("We're now at " + this.route[this.nav] + " (" + this.nav + ")");
 			console.log("Segment end: " + ex + "x" + ey);
 			console.log("Location: " + this.x + "x" + this.y);
+			console.log(this.nextSegment);
 
 			console.groupEnd();
 
-			var olddir = this.segment.dir;
+
 			this.segment = this.nextSegment; // Make its new segment the next segment...
 
 
@@ -112,10 +115,6 @@ class Vehicle {
 			this.x += dx + forcedDX;
 			this.y += dy + forcedDY;
 		}
-		// Else, if the car is one square from being past the segment (so right in front of the intersection)
-		// else if(this.isPastPoint(ex - 3 * (this.segment.dir <= 2 ? 1 : -1), ey - 3 * (this.segment.dir <= 2 ? 1 : -1))) {
-		// 	this.applyTrafficRules();
-		// }
 
 		else if(this.isPastPoint(ex - 3 * pastpointCorr, ey - 3 * pastpointCorr)) {
 			this.applyTrafficRules();

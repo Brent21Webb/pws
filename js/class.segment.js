@@ -65,7 +65,7 @@ class Segment {
 			this.canvas.vehicles.push(v);
 		}
 		else {
-			console.log("No spawn");
+			// console.log("No spawn");
 		}
 	}
 

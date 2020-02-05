@@ -83,7 +83,7 @@ class Canvas {
 			for(var j in this.segments) {
 				if(!(i === j)) { // If it's not the same segment...
 					var s2 = this.segments[j];
-					if(s.connected[1].includes(s2.ID)) {
+					if(s2.connected[1].includes(s.ID)) {
 						console.log(s.ID + " is entered from " + s2.ID);
 						s.outsideConnections.push(s2);
 					}

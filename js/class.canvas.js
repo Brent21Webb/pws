@@ -88,14 +88,14 @@ class Canvas {
 
 
 	update() {
-		var vl = canvas.vehicles[0];
+		var vl = this.vehicles[0];
 		if(vl) {
 			html.innerHTML = "Vehicle ID: " + vl.ID;
 			html.innerHTML += "<br>Segment ID: " + vl.segment.ID;
 			html.innerHTML += "<br>Segment end: " + vl.segment.end.x + "x" + vl.segment.end.yl;
 			html.innerHTML += "<br>Vehicle position: " + vl.x + "x" + vl.y;
 		}
-		
+
 		// Check if spawning is necessary
 		var d = new Date();
 		if(timeDiff(this.lastSpawn, d) > 1) {

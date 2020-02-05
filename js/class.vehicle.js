@@ -61,25 +61,33 @@ class Vehicle {
 			let nextSegment = this.canvas.segments[this.segment.connected[1][nextInRoute] - 1];
 
 			// Check if one of the next segments entries has the direction that gets priority
-			let giveWayTo;
+			let giveWayTo = [];
 			let nsoc = nextSegment.outsideConnections;
+
+			// TODO: IF OPPOSITE DIRECTION, WHO GETS PRIORITY
 			for(let i in nsoc) {
 				if(nsoc[i].dir === dirToFind) {
-					giveWayTo = nsoc[i];
+					giveWayTo.push(nsoc[i]);
 				}
 			} // for
 
+			var g1 = giveWayTo[0];
+			var g2 = giveWayTo[1];
+
+			html.innerHTML = g1.dir + " -- " + g1.ID;
+			html.innerHTML += "<br>" + g2.dir + " -- " + g2.ID;
+
 			// Check if there is a car on the road to give way to
-			if(giveWayTo) {
+			for(var i = 0; i < giveWayTo.length; i++) {
 				var vs = this.canvas.vehicles;
-				for(let i in vs) {
-					var v = vs[i];
-					if(v.segment.ID === giveWayTo.ID && v.isCloseToCrossing) {
+				for(let j in vs) {
+					var v = vs[j];
+					if(v.segment.ID === giveWayTo[i].ID && v.isCloseToCrossing) {
 						giveway = true;
 						break;
 					}
-				} // for i in vehicles
-			} // if giveWayTo
+				} // for j in vehicles
+			} // for i in giveWayTo
 		} // else
 
 		if(giveway) {

@@ -45,6 +45,7 @@ class Vehicle {
 
 
 	applyTrafficRules() {
+		let giveway = false;
 		// If a traffic sign is present
 		if(this.segment.connected[2]) {
 
@@ -52,7 +53,7 @@ class Vehicle {
 
 		else { // else (if no traffic sign is present)
 			let dirToFind = (this.segment.dir + 1 <= 4 ? this.segment.dir + 1 : 1);
-			console.log("To find: " + dirToFind);
+			// console.log("To find: " + dirToFind);
 
 			// Find the next segment this vehicle's gonna enter
 			let nextInRoute = this.route[this.nav + 1] || this.route[this.nav];
@@ -61,14 +62,17 @@ class Vehicle {
 			let giveWayTo;
 			// Check if one of the next segments entries has the direction that gets priority
 			let nsoc = nextSegment.outsideConnections;
-			console.log(nsoc);
+			// console.log(nsoc);
 			for(let i in nsoc) {
 				if(nsoc[i].dir === dirToFind) {
 					giveWayTo = nsoc[i];
 				}
 			}
 
-			console.log(giveWayTo);
+			if(giveway) {
+				this.x -= (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);
+				this.y -= (this.segment.dy ? this.segment.speed / 25 : 0) * (this.segment.dir === 1 ? 1 : -1);
+			}
 		}
 	}
 

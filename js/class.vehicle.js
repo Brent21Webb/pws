@@ -9,6 +9,8 @@ class Vehicle {
 		this.SPRITES = [];
 		this.ID = Vehicle.ID++;
 
+		this.isCloseToCrossing = false;
+
 		this.nav = 0;
 
 		this.__init();
@@ -72,7 +74,7 @@ class Vehicle {
 				var vs = this.canvas.vehicles;
 				for(let i in vs) {
 					var v = vs[i];
-					if(v.segment.ID === giveWayTo.ID) {
+					if(v.segment.ID === giveWayTo.ID && v.isCloseToCrossing) {
 						giveway = true;
 						break;
 					}
@@ -91,11 +93,6 @@ class Vehicle {
 		let ex = this.segment.end.x;
 		let ey = this.segment.end.y + ((this.segment.dir === 3 && this.segment.ID === 12) ? -2 : 0);
 		let pastpointCorr = (this.segment.dir >= 3 ? -1 : 1);
-
-		// html.innerHTML = "End: " + ex + " - " + ey + " (" + ex * 30 + " - " + ey * 30 + ")<br>";
-		// html.innerHTML += "Vehicle: " + this.x + " - " + this.y + "<br>";
-		// html.innerHTML += "isPastPoint - 3: " + this.isPastPoint(ex - 3 * pastpointCorr, ey - 3 * pastpointCorr) + "<br>";
-		// html.innerHTML += "Correction: " + pastpointCorr + "<br>";
 
 		// Calculate the next x position using the segment's direction and speed
 		this.x += (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);
@@ -129,7 +126,11 @@ class Vehicle {
 		}
 
 		else if((this.segment.connected[0] === 0 || this.segment.connected[0] === 6) && this.isPastPoint(ex - 3 * pastpointCorr, ey - 3 * pastpointCorr) && !this.isPastPoint(ex - 2 * pastpointCorr, ey - 2 * pastpointCorr)) {
+			this.isCloseToCrossing = true;
 			this.applyTrafficRules();
+		}
+		else {
+			this.isCloseToCrossing = false;
 		}
 	} // update()
 

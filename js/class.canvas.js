@@ -93,8 +93,11 @@ class Canvas {
 		// 	var vl = this.vehicles[i];
 		// 	html.innerHTML += "Vehicle ID: " + vl.ID;
 		// 	html.innerHTML += "<br>Segment ID: " + vl.segment.ID;
+		// 	html.innerHTML += "<br>Segment begin: " + vl.segment.begin.x + "x" + vl.segment.begin.y;
 		// 	html.innerHTML += "<br>Segment end: " + vl.segment.end.x + "x" + vl.segment.end.y + " (" + (vl.segment.end.x * 30) + "x" + (vl.segment.end.y * 30) + ")";
 		// 	html.innerHTML += "<br>Vehicle position: " + vl.x + "x" + vl.y;
+		// 	html.innerHTML += "<br>Is close: " + vl.isCloseToCrossing;
+		// 	html.innerHTML += "<br>Is on: " + vl.isOnCrossing;
 		// 	html.innerHTML += "<br><br><br>";
 		// }
 

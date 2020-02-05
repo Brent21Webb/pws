@@ -128,6 +128,9 @@ class Vehicle {
 			this.isCloseToCrossing = true;
 			this.applyTrafficRules();
 		}
+		else if(this.isPastPoint(ex - 2 * pastpointCorr, ey - 2 * pastpointCorr) && !this.isPastPoint(ex, ey)) {
+			this.isCloseToCrossing = true;
+		}
 		else {
 			this.isCloseToCrossing = false;
 		}

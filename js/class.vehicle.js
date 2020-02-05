@@ -90,7 +90,7 @@ class Vehicle {
 			this.y += dy + forcedDY;
 		}
 
-		else if(this.isPastPoint(ex - 3 * pastpointCorr, ey - 3 * pastpointCorr) && !this.isPastPoint(ex - 2 * pastpointCorr, ey - 2 * pastpointCorr)) {
+		else if(this.segment.connected[0] === 0 && this.isPastPoint(ex - 3 * pastpointCorr, ey - 3 * pastpointCorr) && !this.isPastPoint(ex - 2 * pastpointCorr, ey - 2 * pastpointCorr)) {
 			this.applyTrafficRules();
 		}
 	} // update()

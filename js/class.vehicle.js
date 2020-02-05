@@ -51,8 +51,24 @@ class Vehicle {
 		}
 
 		else { // else (if no traffic sign is present)
-			let dirToFind = this.segment.dir - 1 || 4;
-			
+			let dirToFind = (this.segment.dir + 1 <= 4 ? this.segment.dir + 1 : 1);
+			console.log("To find: " + dirToFind);
+
+			// Find the next segment this vehicle's gonna enter
+			let nextInRoute = this.route[this.nav + 1] || this.route[this.nav];
+			let nextSegment = this.canvas.segments[this.segment.connected[1][nextInRoute] - 1];
+
+			let giveWayTo;
+			// Check if one of the next segments entries has the direction that gets priority
+			let nsoc = nextSegment.outsideConnections;
+			console.log(nsoc);
+			for(let i in nsoc) {
+				if(nsoc[i].dir === dirToFind) {
+					giveWayTo = nsoc[i];
+				}
+			}
+
+			console.log(giveWayTo);
 		}
 	}
 

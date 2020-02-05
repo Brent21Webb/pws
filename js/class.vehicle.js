@@ -22,7 +22,6 @@ class Vehicle {
 		this.COLOURS = ["pink", "green", "orange", "blue"];
 
 		var end = Math.floor(Math.random() * this.canvas.endpoints.length);
-		end = 1;
 		this.end = this.canvas.endpoints[end];
 		this.colour = this.COLOURS[end];
 

@@ -22,6 +22,7 @@ class Vehicle {
 		this.COLOURS = ["pink", "green", "orange", "blue"];
 
 		var end = Math.floor(Math.random() * this.canvas.endpoints.length);
+		// end = 0;
 		this.end = this.canvas.endpoints[end];
 		this.colour = this.COLOURS[end];
 
@@ -124,15 +125,21 @@ class Vehicle {
 			this.y += dy + forcedDY;
 		}
 
+
 		else if((this.segment.connected[0] === 0 || this.segment.connected[0] === 6) && this.isPastPoint(ex - 3 * pastpointCorr, ey - 3 * pastpointCorr) && !this.isPastPoint(ex - 2 * pastpointCorr, ey - 2 * pastpointCorr)) {
 			this.isCloseToCrossing = true;
 			this.applyTrafficRules();
 		}
+		else if(this.isPastPoint(ex - 4 * pastpointCorr, ey - 4 * pastpointCorr)) {
+			this.isCloseToCrossing = true;
+		}
 		else if(this.isPastPoint(ex - 2 * pastpointCorr, ey - 2 * pastpointCorr) && !this.isPastPoint(ex, ey)) {
 			this.isCloseToCrossing = true;
+			this.isOnCrossing = true;
 		}
 		else {
 			this.isCloseToCrossing = false;
+			this.isOnCrossing = false;
 		}
 	} // update()
 

@@ -51,7 +51,8 @@ class Vehicle {
 		}
 
 		else { // else (if no traffic sign is present)
-
+			let dirToFind = this.segment.dir - 1 || 4;
+			
 		}
 	}
 

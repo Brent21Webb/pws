@@ -48,8 +48,7 @@ class Vehicle {
 
 	applyTrafficRules() {
 		let giveway = false;
-		// If a traffic sign is present
-		if(this.segment.connected[2]) {
+		if(this.segment.connected[2]) { // If a traffic sign is present
 
 		} // if
 

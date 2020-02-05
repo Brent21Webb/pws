@@ -45,7 +45,14 @@ class Vehicle {
 
 
 	applyTrafficRules() {
-		data.innerHTML += " APPLYING TRAFFIC RULES <br>";
+		// If a traffic sign is present
+		if(this.segment.connected[2]) {
+
+		}
+
+		else { // else (if no traffic sign is present)
+
+		}
 	}
 
 
@@ -54,10 +61,10 @@ class Vehicle {
 		let ey = this.segment.end.y + ((this.segment.dir === 3 && this.segment.ID === 12) ? -2 : 0);
 		let pastpointCorr = (this.segment.dir >= 3 ? -1 : 1);
 
-		html.innerHTML = "End: " + ex + " - " + ey + " (" + ex * 30 + " - " + ey * 30 + ")<br>";
-		html.innerHTML += "Vehicle: " + this.x + " - " + this.y + "<br>";
-		html.innerHTML += "isPastPoint - 3: " + this.isPastPoint(ex - 3 * pastpointCorr, ey - 3 * pastpointCorr) + "<br>";
-		html.innerHTML += "Correction: " + pastpointCorr + "<br>";
+		// html.innerHTML = "End: " + ex + " - " + ey + " (" + ex * 30 + " - " + ey * 30 + ")<br>";
+		// html.innerHTML += "Vehicle: " + this.x + " - " + this.y + "<br>";
+		// html.innerHTML += "isPastPoint - 3: " + this.isPastPoint(ex - 3 * pastpointCorr, ey - 3 * pastpointCorr) + "<br>";
+		// html.innerHTML += "Correction: " + pastpointCorr + "<br>";
 
 		// Calculate the next x position using the segment's direction and speed
 		this.x += (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);

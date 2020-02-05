@@ -7,6 +7,7 @@ class Segment {
 		this.dy = this.end.y - this.begin.y;
 		this.speed = speed;
 		this.connected = connected;
+		this.outsideConnections = [];
 		this.isVisible = visible;
 		this.canvas = canvas;
 

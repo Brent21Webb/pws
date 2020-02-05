@@ -49,7 +49,7 @@ class Vehicle {
 		// If a traffic sign is present
 		if(this.segment.connected[2]) {
 
-		}
+		} // if
 
 		else { // else (if no traffic sign is present)
 			let dirToFind = (this.segment.dir + 1 <= 4 ? this.segment.dir + 1 : 1);
@@ -67,14 +67,14 @@ class Vehicle {
 				if(nsoc[i].dir === dirToFind) {
 					giveWayTo = nsoc[i];
 				}
-			}
+			} // for
+		} // else
 
-			if(giveway) {
-				this.x -= (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);
-				this.y -= (this.segment.dy ? this.segment.speed / 25 : 0) * (this.segment.dir === 1 ? 1 : -1);
-			}
+		if(giveway) {
+			this.x -= (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);
+			this.y -= (this.segment.dy ? this.segment.speed / 25 : 0) * (this.segment.dir === 1 ? 1 : -1);
 		}
-	}
+	} // applyTrafficRules()
 
 
 	update() {

@@ -67,8 +67,6 @@ class Vehicle {
 				}
 			} // for
 
-			console.log(giveWayTo);
-
 			// Check if there is a car on the road to give way to
 			if(giveWayTo) {
 				var vs = this.canvas.vehicles;
@@ -78,8 +76,8 @@ class Vehicle {
 						giveway = true;
 						break;
 					}
-				}
-			}
+				} // for i in vehicles
+			} // if giveWayTo
 		} // else
 
 		if(giveway) {

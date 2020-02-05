@@ -48,6 +48,7 @@ const s16 = new Segment(new Vector(16, 28), new Vector(8, 28), 50, [1, [15]], tr
 
 canvas.initSegmentSpawning();
 canvas.initEndpoints();
+canvas.initSegmentConnections();
 
 // console.log(seg1.ID);
 console.info("Segments");

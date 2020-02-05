@@ -22,6 +22,7 @@ class Vehicle {
 		this.COLOURS = ["pink", "green", "orange", "blue"];
 
 		var end = Math.floor(Math.random() * this.canvas.endpoints.length);
+		end = 1;
 		this.end = this.canvas.endpoints[end];
 		this.colour = this.COLOURS[end];
 
@@ -90,7 +91,7 @@ class Vehicle {
 
 	update() {
 		let ex = this.segment.end.x;
-		let ey = this.segment.end.y + ((this.segment.dir === 3 && this.segment.ID === 12) ? -2 : 0);
+		let ey = this.segment.end.y + ((this.segment.dir === 3 && this.segment.connected[0] === 6) ? -2 : 0);
 		let pastpointCorr = (this.segment.dir >= 3 ? -1 : 1);
 
 		// Calculate the next x position using the segment's direction and speed

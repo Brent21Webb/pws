@@ -10,6 +10,7 @@ class Canvas {
 		this.endpoints = [];
 
 		this.vehicles = [];
+		this.PASSED_VEHICLES = 0;
 
 		this.lastSpawn = undefined;
 

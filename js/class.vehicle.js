@@ -117,7 +117,7 @@ class Vehicle {
 	} // draw()
 
 	destroySelf() {
-		this.canvas.FLOW++;
+		this.canvas.NUM_OF_VEHICLES++;
 		// Find the vehicle array
 		var v = this.canvas.vehicles;
 		for(var i in v) { // For every vehicle

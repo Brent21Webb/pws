@@ -72,6 +72,26 @@ class Canvas {
 	}
 
 
+	initSegmentConnections() {
+		var ids = [];
+		// For every segment...
+		for(var i in this.segments) {
+			// ...check if it has a connection from somewhere
+			var s = this.segments[i];
+			ids.push(s.ID);
+
+			for(var j in this.segments) {
+				if(!i === j) { // If it's not the same segment...
+					var s2 = this.segments[j];
+					if(s2.connected.includes(s2.ID)) {
+						s.outsideConnections.push(s2);
+					}
+				} // if not same segment
+			} // for j
+		} // for i
+	}
+
+
 	update() {
 		// Check if spawning is necessary
 		var d = new Date();

@@ -66,16 +66,16 @@ class Vehicle {
 
 			// TODO: IF OPPOSITE DIRECTION, WHO GETS PRIORITY
 			for(let i in nsoc) {
-				if(nsoc[i].dir === dirToFind) {
+				if(nsoc[i].dir === dirToFind || (nsoc[i].dir === this.segment.dir - 2) || (nsoc[i].dir === this.segment.dir + 2)) {
 					giveWayTo.push(nsoc[i]);
 				}
 			} // for
 
-			var g1 = giveWayTo[0];
-			var g2 = giveWayTo[1];
-
-			html.innerHTML = g1.dir + " -- " + g1.ID;
-			html.innerHTML += "<br>" + g2.dir + " -- " + g2.ID;
+			// var g1 = giveWayTo[0];
+			// var g2 = giveWayTo[1];
+			//
+			// html.innerHTML = g1.dir + " -- " + g1.ID;
+			// html.innerHTML += "<br>" + g2.dir + " -- " + g2.ID;
 
 			// Check if there is a car on the road to give way to
 			for(var i = 0; i < giveWayTo.length; i++) {

@@ -148,7 +148,7 @@ class Vehicle {
 		let vs = [];
 		let cvs = this.canvas.vehicles;
 		let maxX = this.x; let maxY = this.y;
-		let minX = this.x; let maxY = this.y;
+		let minX = this.x; let minY = this.y;
 		for(let i in cvs) {
 			// html.innerHTML += "<br>ID: " + cvs[i].ID + " --- x: " + cvs[i].x + " --- y: " + cvs[i].y;
 			if(cvs[i].segment.ID === this.segment.ID && cvs[i].ID !== this.ID) {
@@ -161,11 +161,11 @@ class Vehicle {
 		// if((this.x !== maxX && !(this.segment.dir % 2)) || (this.y !== maxY && this.segment.dir % 2)) {
 		if(this.x !== maxX || this.y !== maxY || this.x !== minX || this.y !== minY) {
 			for(let i in vs) {
-				if(this.segment.dir === 1 && this.y + 70 >= vs[i].y && this.y < vs[i].y) {
+				if(this.y !== maxY && this.segment.dir === 1 && this.y + 70 >= vs[i].y && this.y < vs[i].y) {
 					hasToStop = true;
 				} else if(this.segment.dir === 2) {
 					// hasToStop = true;
-				} else if(this.segment.dir === 3 && this.y - 70 >= vs[i].y && this.y > vs[i].y) {
+				} else if(this.y !== minY && this.segment.dir === 3 && this.y - 70 >= vs[i].y && this.y > vs[i].y) {
 					hasToStop = true;
 				} else if(this.segment.dir === 4) {
 					// hasToStop = true;

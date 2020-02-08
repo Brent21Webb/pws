@@ -73,7 +73,7 @@ class Vehicle {
 
 			// Check if there is a car on the road to give way to
 			for(var i = 0; i < giveWayTo.length; i++) {
-				var vs = this.canvas.vehicles;
+				let vs = this.canvas.vehicles;
 				for(let j in vs) {
 					var v = vs[j];
 					if(v.segment.ID === giveWayTo[i].ID && v.isCloseToCrossing) {
@@ -127,7 +127,6 @@ class Vehicle {
 			this.y += dy + forcedDY;
 		}
 
-
 		else if((this.segment.connected[0] === 0 || this.segment.connected[0] === 6) && this.isPastPoint(ex - 3 * pastpointCorr, ey - 3 * pastpointCorr) && !this.isPastPoint(ex - 2 * pastpointCorr, ey - 2 * pastpointCorr)) {
 			this.isCloseToCrossing = true;
 			this.applyTrafficRules();
@@ -143,6 +142,15 @@ class Vehicle {
 			this.isCloseToCrossing = false;
 			this.isOnCrossing = false;
 		}
+
+		// Check for traffic jams
+		let vs = [];
+		for(let i in this.canvas.vehicles) {
+			if(this.canvas.vehicles[i].segment.ID === this.segment.ID) {
+				vs.push(this.canvas.vehicles[i]);
+			}
+		}
+		
 	} // update()
 
 	draw(ctx) {

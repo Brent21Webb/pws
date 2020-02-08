@@ -66,7 +66,7 @@ class Vehicle {
 
 			// TODO: IF OPPOSITE DIRECTION, WHO GETS PRIORITY
 			for(let i in nsoc) {
-				if(nsoc[i].dir === dirToFind || (nsoc[i].dir === this.segment.dir - 2)) {
+				if(nsoc[i].dir === dirToFind || (nsoc[i].dir === this.segment.dir + 2)) {
 					giveWayTo.push(nsoc[i]);
 				}
 			} // for

@@ -148,28 +148,30 @@ class Vehicle {
 		let vs = [];
 		let cvs = this.canvas.vehicles;
 		let maxX = this.x; let maxY = this.y;
+		let minX = this.x; let maxY = this.y;
 		for(let i in cvs) {
 			// html.innerHTML += "<br>ID: " + cvs[i].ID + " --- x: " + cvs[i].x + " --- y: " + cvs[i].y;
 			if(cvs[i].segment.ID === this.segment.ID && cvs[i].ID !== this.ID) {
-				maxX = Math.max(maxX, cvs[i].x);
-				maxY = Math.max(maxY, cvs[i].y);
+				maxX = Math.max(maxX, cvs[i].x); minX = Math.min(minX, cvs[i].x);
+				maxY = Math.max(maxY, cvs[i].y); minY = Math.min(minX, cvs[i].y);
 				vs.push(cvs[i]);
 			}
 		}
 
 		// if((this.x !== maxX && !(this.segment.dir % 2)) || (this.y !== maxY && this.segment.dir % 2)) {
-		if(this.x !== maxX || this.y !== maxY) {
+		if(this.x !== maxX || this.y !== maxY || this.x !== minX || this.y !== minY) {
 			for(let i in vs) {
-				if(this.segment.dir % 2) { // If vertical
-					if(this.y + 70 >= vs[i].y) { // If going down
-						hasToStop = true;
-					}
+				if(this.segment.dir === 1 && this.y + 70 >= vs[i].y && this.y < vs[i].y) {
+					hasToStop = true;
+				} else if(this.segment.dir === 2) {
+					// hasToStop = true;
+				} else if(this.segment.dir === 3 && this.y - 70 >= vs[i].y && this.y > vs[i].y) {
+					hasToStop = true;
+				} else if(this.segment.dir === 4) {
+					// hasToStop = true;
 				}
-				else {
-
-				}
-			}
-		}
+			} // for i
+		} // if not max
 		if(hasToStop) {
 			this.x -= (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);
 			this.y -= (this.segment.dy ? this.segment.speed / 25 : 0) * (this.segment.dir === 1 ? 1 : -1);

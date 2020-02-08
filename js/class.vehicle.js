@@ -163,12 +163,12 @@ class Vehicle {
 			for(let i in vs) {
 				if(this.y !== maxY && this.segment.dir === 1 && this.y + 70 >= vs[i].y && this.y < vs[i].y) {
 					hasToStop = true;
-				} else if(this.segment.dir === 2) {
-					// hasToStop = true;
-				} else if(this.y !== minY && this.segment.dir === 3 && this.y - 70 >= vs[i].y && this.y > vs[i].y) {
+				} else if(this.x !== maxX && this.segment.dir === 2 && this.x + 70 >= vs[i].x && this.x < vs[i].x) {
 					hasToStop = true;
-				} else if(this.segment.dir === 4) {
-					// hasToStop = true;
+				} else if(this.y !== minY && this.segment.dir === 3 && this.y - 70 <= vs[i].y && this.y > vs[i].y) {
+					hasToStop = true;
+				} else if(this.x !== minX && this.segment.dir === 4 && this.x - 70 <= vs[i].x && this.x > vs[i].x) {
+					hasToStop = true;
 				}
 			} // for i
 		} // if not max

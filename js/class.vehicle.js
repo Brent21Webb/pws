@@ -22,7 +22,7 @@ class Vehicle {
 		this.COLOURS = ["pink", "green", "orange", "blue"];
 
 		var end = Math.floor(Math.random() * this.canvas.endpoints.length);
-		// end = 0;
+		end = 0;
 		this.end = this.canvas.endpoints[end];
 		this.colour = this.COLOURS[end];
 
@@ -146,17 +146,23 @@ class Vehicle {
 		// Check for traffic jams
 		var hasToStop = false;
 		let vs = [];
-		for(let i in this.canvas.vehicles) {
-			if(this.canvas.vehicles[i].segment.ID === this.segment.ID && this.canvas.vehicles[i].ID !== this.ID) {
+		let cvs = this.canvas.vehicles;
+		let maxX = 0; let maxY = 0;
+		for(let i in cvs) {
+			// html.innerHTML += "<br>ID: " + cvs[i].ID + " --- x: " + cvs[i].x + " --- y: " + cvs[i].y;
+			if(cvs[i].segment.ID === this.segment.ID && cvs[i].ID !== this.ID) {
+				maxX = Math.max(maxX, cvs[i].x);
+				maxY = Math.max(maxY, cvs[i].y);
 				vs.push(this.canvas.vehicles[i]);
 			}
 		}
-		for(let i in vs) {
-			// If vertical
-			if(this.segment.dir % 2) {
-				// If going down
-				if(this.y + 80 >= vs[i].y) {
-					hasToStop = true;
+
+		if(this.x !== maxX && this.y !== maxY) {
+			for(let i in vs) {
+				if(this.segment.dir % 2) { // If vertical
+					if(this.y + 70 >= vs[i].y) { // If going down
+						hasToStop = true;
+					}
 				}
 			}
 		}

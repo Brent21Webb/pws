@@ -158,9 +158,10 @@ class Vehicle {
 		}
 
 		// if((this.x !== maxX && !(this.segment.dir % 2)) || (this.y !== maxY && this.segment.dir % 2)) {
+		if(this.x !== maxX || this.y !== maxY) {
 			for(let i in vs) {
 				if(this.segment.dir % 2) { // If vertical
-					if(this.y !== maxY && this.y + 70 >= vs[i].y) { // If going down
+					if(this.y + 70 >= vs[i].y) { // If going down
 						hasToStop = true;
 					}
 				}
@@ -168,7 +169,7 @@ class Vehicle {
 
 				}
 			}
-		// }
+		}
 		if(hasToStop) {
 			this.x -= (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);
 			this.y -= (this.segment.dy ? this.segment.speed / 25 : 0) * (this.segment.dir === 1 ? 1 : -1);

@@ -71,12 +71,6 @@ class Vehicle {
 				}
 			} // for
 
-			// var g1 = giveWayTo[0];
-			// var g2 = giveWayTo[1];
-			//
-			// html.innerHTML = g1.dir + " -- " + g1.ID;
-			// html.innerHTML += "<br>" + g2.dir + " -- " + g2.ID;
-
 			// Check if there is a car on the road to give way to
 			for(var i = 0; i < giveWayTo.length; i++) {
 				var vs = this.canvas.vehicles;

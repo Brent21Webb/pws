@@ -94,7 +94,7 @@ class Vehicle {
 	update() {
 		let ex = this.segment.end.x;
 		let ey = this.segment.end.y + ((this.segment.dir === 3 && this.segment.connected[0] === 6) ? -2 : 0);
-		let pastpointCorr = (this.segment.dir >= 3 ? -1 : 1);
+		let corr = (this.segment.dir >= 3 ? -1 : 1);
 
 		// Calculate the next x position using the segment's direction and speed
 		this.x += (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);
@@ -127,14 +127,14 @@ class Vehicle {
 			this.y += dy + forcedDY;
 		}
 
-		else if((this.segment.connected[0] === 0 || this.segment.connected[0] === 6) && this.isPastPoint(ex - 3 * pastpointCorr, ey - 3 * pastpointCorr) && !this.isPastPoint(ex - 2 * pastpointCorr, ey - 2 * pastpointCorr)) {
+		else if((this.segment.connected[0] === 0 || this.segment.connected[0] === 6) && this.isPastPoint(ex - 3 * corr, ey - 3 * corr) && !this.isPastPoint(ex - 2 * corr, ey - 2 * corr)) {
 			this.isCloseToCrossing = true;
 			this.applyTrafficRules();
 		}
-		else if(this.isPastPoint(ex - 4 * pastpointCorr, ey - 4 * pastpointCorr)) {
+		else if(this.isPastPoint(ex - 4 * corr, ey - 4 * corr)) {
 			this.isCloseToCrossing = true;
 		}
-		else if(this.isPastPoint(ex - 2 * pastpointCorr, ey - 2 * pastpointCorr) && !this.isPastPoint(ex, ey)) {
+		else if(this.isPastPoint(ex - 2 * corr, ey - 2 * corr) && !this.isPastPoint(ex, ey)) {
 			this.isCloseToCrossing = true;
 			this.isOnCrossing = true;
 		}
@@ -144,13 +144,26 @@ class Vehicle {
 		}
 
 		// Check for traffic jams
+		var hasToStop = false;
 		let vs = [];
 		for(let i in this.canvas.vehicles) {
-			if(this.canvas.vehicles[i].segment.ID === this.segment.ID) {
+			if(this.canvas.vehicles[i].segment.ID === this.segment.ID && this.canvas.vehicles[i].ID !== this.ID) {
 				vs.push(this.canvas.vehicles[i]);
 			}
 		}
-		
+		for(let i in vs) {
+			// If vertical
+			if(this.segment.dir % 2) {
+				// If going down
+				if(this.y + 80 >= vs[i].y) {
+					hasToStop = true;
+				}
+			}
+		}
+		if(hasToStop) {
+			this.x -= (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);
+			this.y -= (this.segment.dy ? this.segment.speed / 25 : 0) * (this.segment.dir === 1 ? 1 : -1);
+		}
 	} // update()
 
 	draw(ctx) {

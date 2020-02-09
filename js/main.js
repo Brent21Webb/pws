@@ -17,6 +17,11 @@ const ROUTES = {
 	10: [[0,1,0], [0,0,0,0,0,1,0]]
 };
 
+/*** INTERSECTIONS
+ 4, 5
+ 3, 6, 12
+ 2, 15
+***/
 
 // Make the canvas element
 const canvas = new Canvas(930, 930, "#A2C969", geti("map"));

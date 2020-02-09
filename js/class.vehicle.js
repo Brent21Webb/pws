@@ -22,7 +22,7 @@ class Vehicle {
 		this.COLOURS = ["pink", "green", "orange", "blue"];
 
 		var end = Math.floor(Math.random() * this.canvas.endpoints.length);
-		end = 0;
+		// end = 0;
 		this.end = this.canvas.endpoints[end];
 		this.colour = this.COLOURS[end];
 
@@ -158,30 +158,19 @@ class Vehicle {
 			}
 		}
 
-		if(this.ID === 13) {
-			html.innerHTML = "Position: " + this.x + ", " + this.y + "<br>";
-			html.innerHTML += "Segment: " + this.segment.ID + "<br>";
-		}
-
-		// if((this.x !== maxX && !(this.segment.dir % 2)) || (this.y !== maxY && this.segment.dir % 2)) {
-		if(this.x !== maxX || this.y !== maxY || this.x !== minX || this.y !== minY) {
-			for(let i in vs) {
-				if(this.y !== maxY && this.segment.dir === 1 && this.y + 70 >= vs[i].y && this.y < vs[i].y) {
-					hasToStop = true;
-				} else if(this.x !== maxX && this.segment.dir === 2 && this.x + 70 >= vs[i].x && this.x < vs[i].x) {
-					hasToStop = true;
-				} else if(this.y !== minY && this.segment.dir === 3 && this.y - 70 <= vs[i].y && this.y > vs[i].y) {
-					hasToStop = true;
-				} else if(this.x !== minX && this.segment.dir === 4 && this.x - 70 <= vs[i].x && this.x > vs[i].x) {
-					hasToStop = true;
-				}
-			} // for i
-		} // if not max
-		else if((this.x === maxX && this.y === maxY) || (this.x === minX && this.y === minY)) {
+		for(let i in vs) {
+			if(this.y !== maxY && this.segment.dir === 1 && this.y + 70 >= vs[i].y && this.y < vs[i].y) {
+				hasToStop = true;
+			} else if(this.x !== maxX && this.segment.dir === 2 && this.x + 70 >= vs[i].x && this.x < vs[i].x) {
+				hasToStop = true;
+			} else if(this.y !== minY && this.segment.dir === 3 && this.y - 70 <= vs[i].y && this.y > vs[i].y) {
+				hasToStop = true;
+			} else if(this.x !== minX && this.segment.dir === 4 && this.x - 70 <= vs[i].x && this.x > vs[i].x) {
+				hasToStop = true;
+			}
+		} // for i
+		if((this.x === maxX && this.y === maxY && corr > 0) || (this.x === minX && this.y === minY && corr < 0)) {
 			if(this.isPastPoint(ex - 2 * corr, ey - 2 * corr)) {
-				if(this.ID === 13) {
-					html.innerHTML += "Started checking for next segment vehicles<br>";
-				}
 				let nextInRoute = this.route[this.nav];
 				let nextSegment = this.canvas.segments[this.segment.connected[1][nextInRoute] - 1];
 
@@ -196,9 +185,6 @@ class Vehicle {
 						nsvs.push(cvs[i]);
 					}
 				}
-				if(this.ID === 13) {
-					html.innerHTML += "Next segment vehicles length: " + nsvs.length + "<br>";
-				}
 				for(let i in nsvs) {
 					if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x + 0 * corr, nsvs[i].segment.begin.y + 0 * corr)) {
 						hasToStop = true;
@@ -207,13 +193,6 @@ class Vehicle {
 				}
 			} // if isPastPoint
 		} // else if
-
-
-		if(this.ID === 13) {
-			html.innerHTML += "Has to stop: " + hasToStop + "<br>";
-			// html.innerHTML += "Segment: " + this.segment.ID + "<br>";
-		}
-
 
 		if(hasToStop) {
 			this.x -= (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);

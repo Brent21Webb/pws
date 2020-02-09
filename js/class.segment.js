@@ -68,8 +68,19 @@ class Segment {
 		}
 
 		for(let i in others) {
-			if(others[i].connected[3]) {
+			let oc = others[i].connected;
+			if(oc[3] || oc[3] === 0) {
 				// Do stuff based on this connection
+				switch(oc[3]) {
+					case 1:
+						this.connected[3] = 2;
+						break;
+					case 2:
+						this.connected[3] = 1;
+						break;
+					default:
+						
+				}
 			}
 			else {
 				this.connected[3] = Math.floor(Math.random() * 3);

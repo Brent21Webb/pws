@@ -66,6 +66,7 @@ class Segment {
 				}
 			}
 		}
+		if(!others) { return; }
 
 		var isFirst = false;
 		for(let i = 0; i < others.length; i++) {

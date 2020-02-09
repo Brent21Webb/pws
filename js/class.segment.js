@@ -66,7 +66,15 @@ class Segment {
 				}
 			}
 		}
-		console.log(others);
+
+		for(let i in others) {
+			if(others[i].connected[3]) {
+				// Do stuff based on this connection
+			}
+			else {
+				this.connected[3] = Math.floor(Math.random() * 3);
+			}
+		}
 	}
 
 

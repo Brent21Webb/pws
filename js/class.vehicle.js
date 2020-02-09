@@ -186,7 +186,7 @@ class Vehicle {
 					}
 				}
 				for(let i in nsvs) {
-					if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x + 0 * corr, nsvs[i].segment.begin.y + 0 * corr)) {
+					if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x, nsvs[i].segment.begin.y)) {
 						hasToStop = true;
 						break;
 					}

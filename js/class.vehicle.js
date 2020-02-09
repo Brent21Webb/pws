@@ -22,7 +22,7 @@ class Vehicle {
 		this.COLOURS = ["pink", "green", "orange", "blue"];
 
 		var end = Math.floor(Math.random() * this.canvas.endpoints.length);
-		// end = 0;
+		end = 1;
 		this.end = this.canvas.endpoints[end];
 		this.colour = this.COLOURS[end];
 
@@ -179,7 +179,7 @@ class Vehicle {
 				this.hasToStop = true;
 			}
 		} // for i
-		if((this.x === maxX && this.y === maxY) || (this.x === minX && this.y === minY)) {
+		if(((this.x === maxX || this.x === minX) && this.segment.dir % 2) || ((this.y === maxY || this.y === minY) && !(this.segment.dir % 2))) {
 			if(this.isPastPoint(ex - 2 * corr, ey - 2 * corr)) {
 				let nextInRoute = this.route[this.nav];
 				let nextSegment = this.canvas.segments[this.segment.connected[1][nextInRoute] - 1];
@@ -195,8 +195,17 @@ class Vehicle {
 						nsvs.push(cvs[i]);
 					}
 				}
+				if(this.ID === 24) {
+					var t = (nsvs[2] ? nsvs[2] : undefined);
+				}
 				for(let i in nsvs) {
-					if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x - 0.5, nsvs[i].segment.begin.y - 0.5) && !(nsvs[i].segment.dir === this.segment.dir) && (this.segment.connected[0] === 0 || this.segment.connected[0] === 6)) {
+					if(nsvs[i].segment.dir === this.segment.dir) {
+						if((this.segment.dir === 1 && this.y + 70 >= nsvs[i].y) || (this.segment.dir === 2 && this.x + 70 >= nsvs[i].x) || (this.segment.dir === 3 && this.y - 70 <= nsvs[i].y) || (this.segment.dir === 4 && this.x - 70 <= nsvs[i].x)) {
+							this.hasToStop = true;
+							break;
+						}
+					}
+					if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x - 2, nsvs[i].segment.begin.y - 2) && !(nsvs[i].segment.dir === this.segment.dir)) {
 						this.hasToStop = true;
 						break;
 					}

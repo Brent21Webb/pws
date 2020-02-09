@@ -32,9 +32,10 @@ class Canvas {
 	initSegmentSpawning() {
 		const ids = [];
 		const connectedFrom = [];
-		// Initialise arrays for checking the overlap
+		// Initialise arrays for checking the overlap, and initialising their traffic signs
 		for(var i in this.segments) {
 			var s = this.segments[i];
+			s.__lateInit();
 			ids.push(s.ID);
 			if(s.connected[0] >= 0) {
 				for(var i in s.connected[1]) {

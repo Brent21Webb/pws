@@ -54,6 +54,22 @@ class Segment {
 	} // __init()
 
 
+	__lateInit() {
+		// Set priority signs
+		var cr = this.connected[2];
+		if(cr) {
+			var ss = this.canvas.segments;
+			var others = [];
+			for(let i in ss) {
+				if(ss[i].connected[2] === cr && ss[i].ID !== this.ID) {
+					others.push(ss[i]);
+				}
+			}
+		}
+		console.log(others);
+	}
+
+
 	initAsSpawner() {
 		this.spawner = true;
 	}

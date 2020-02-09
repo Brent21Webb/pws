@@ -51,6 +51,12 @@ class Segment {
 			TEMP_IMG.src = "sprites/roads/" + this.CONNECTION_PATHS[i] + "New.png";
 			Segment.CONNECTIONS[i] = TEMP_IMG;
 		}
+		this.SIGN_PATHS = ["give-way", "trafficlight-green", "trafficlight-red"];
+		for(var i in this.SIGN_PATHS) {
+			var TEMP_IMG = new Image();
+			TEMP_IMG.src = "sprites/signs/" + this.SIGN_PATHS[i] + ".png";
+			Segment.TRAFFIC_SIGNS[i] = TEMP_IMG;
+		}
 	} // __init()
 
 
@@ -141,11 +147,16 @@ class Segment {
 		if(this.connected[0] >= 0 && this.connected[0] !== 6) {
 			ctx.drawImage(Segment.CONNECTIONS[this.connected[0]], this.end.x * 30, this.end.y * 30, 60, 60);
 		} // if connected
+
+		if(this.connected[3]) {
+
+		}
 	} // draw(ctx)
 } // class Segment
 
 Segment.ID = 1;
 Segment.CONNECTIONS = [];
+Segment.TRAFFIC_SIGNS = [];
 
 
 

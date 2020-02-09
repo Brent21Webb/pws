@@ -70,6 +70,11 @@ console.info("Endings");
 console.log(canvas.endpoints);
 console.log("");
 
+var s = canvas.segments
+for(let i in s) {
+	html.innerHTML += "Segment " + s[i].ID  + ": " + s[i].connected[2] + " - " + s[i].connected[3] + "<br>";
+}
+
 
 // canvas.addSegment(seg1);
 

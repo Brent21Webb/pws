@@ -131,12 +131,12 @@ class Vehicle {
 			this.isCloseToCrossing = true;
 			this.applyTrafficRules();
 		}
-		else if(this.isPastPoint(ex - 4 * corr, ey - 4 * corr)) {
-			this.isCloseToCrossing = true;
-		}
 		else if(this.isPastPoint(ex - 2 * corr, ey - 2 * corr) && !this.isPastPoint(ex, ey)) {
 			this.isCloseToCrossing = true;
 			this.isOnCrossing = true;
+		}
+		else if(this.isPastPoint(ex - 4 * corr, ey - 4 * corr)) {
+			this.isCloseToCrossing = true;
 		}
 		else {
 			this.isCloseToCrossing = false;
@@ -158,6 +158,11 @@ class Vehicle {
 			}
 		}
 
+		if(this.ID === 13) {
+			html.innerHTML = "Position: " + this.x + ", " + this.y + "<br>";
+			html.innerHTML += "Segment: " + this.segment.ID + "<br>";
+		}
+
 		// if((this.x !== maxX && !(this.segment.dir % 2)) || (this.y !== maxY && this.segment.dir % 2)) {
 		if(this.x !== maxX || this.y !== maxY || this.x !== minX || this.y !== minY) {
 			for(let i in vs) {
@@ -174,6 +179,9 @@ class Vehicle {
 		} // if not max
 		else if((this.x === maxX && this.y === maxY) || (this.x === minX && this.y === minY)) {
 			if(this.isPastPoint(ex - 2 * corr, ey - 2 * corr)) {
+				if(this.ID === 13) {
+					html.innerHTML += "Started checking for next segment vehicles<br>";
+				}
 				let nextInRoute = this.route[this.nav];
 				let nextSegment = this.canvas.segments[this.segment.connected[1][nextInRoute] - 1];
 
@@ -188,14 +196,24 @@ class Vehicle {
 						nsvs.push(cvs[i]);
 					}
 				}
+				if(this.ID === 13) {
+					html.innerHTML += "Next segment vehicles length: " + nsvs.length + "<br>";
+				}
 				for(let i in nsvs) {
-					if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x + 2 * corr, nsvs[i].segment.begin.y + 2 * corr)) {
+					if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x + 0 * corr, nsvs[i].segment.begin.y + 0 * corr)) {
 						hasToStop = true;
 						break;
 					}
 				}
 			} // if isPastPoint
 		} // else if
+
+
+		if(this.ID === 13) {
+			html.innerHTML += "Has to stop: " + hasToStop + "<br>";
+			// html.innerHTML += "Segment: " + this.segment.ID + "<br>";
+		}
+
 
 		if(hasToStop) {
 			this.x -= (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);

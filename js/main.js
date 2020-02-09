@@ -9,6 +9,7 @@ function timeDiff(t1, t2) {
 
 var html = geti("data");
 var pause = false;
+var interval;
 
 const ROUTES = {
 	1:  [[0,0,0], [0,1,0,1,0]],

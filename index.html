@@ -11,7 +11,8 @@
 			<canvas id="map"></canvas>
 		</div>
 
-		<button onclick="pause = !pause; canvas.update();">Pause/Resume</button>
+		<button onclick="pause = !pause; canvas.update(); clearInterval(interval);">Pause/Resume</button>
+		<button onclick="clearInterval(interval); interval = setInterval(function() { canvas.update(); }, 1000); pause = true;">1 FPS</button>
 
 		<div class="data">
 			<p id="data"></p>

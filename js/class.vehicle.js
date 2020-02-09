@@ -222,8 +222,6 @@ class Vehicle {
 				console.error("Unknown direction. ");
 		}
 		ctx.drawImage(this.sprite, this.x, this.y, w, h);
-		ctx.fillStyle = "#FFF";
-		ctx.fillRect(this.x, this.y, 5, 5);
 	} // draw()
 
 	destroySelf() {

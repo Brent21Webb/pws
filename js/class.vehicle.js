@@ -22,7 +22,7 @@ class Vehicle {
 		this.COLOURS = ["pink", "green", "orange", "blue"];
 
 		var end = Math.floor(Math.random() * this.canvas.endpoints.length);
-		end = 1;
+		// end = 1;
 		this.end = this.canvas.endpoints[end];
 		this.colour = this.COLOURS[end];
 
@@ -195,17 +195,22 @@ class Vehicle {
 						nsvs.push(cvs[i]);
 					}
 				}
-				if(this.ID === 24) {
-					var t = (nsvs[2] ? nsvs[2] : undefined);
+				if(this.ID === 3 + (11 * 3)) {
+					var t = (nsvs[3] ? nsvs[3] : undefined);
+					// console.log(t);
+					// console.log(t.segment.begin);
+					// console.log(t.isPastPoint(t.segment.begin.x - 2, t.segment.begin.y - 0));
 				}
 				for(let i in nsvs) {
+					let xppcorr = (nsvs[i].segment.dir === 4 ? -2 : 0);
+					let yppcorr = (nsvs[i].segment.dir === 1 ? 0 : -2);
 					if(nsvs[i].segment.dir === this.segment.dir) {
 						if((this.segment.dir === 1 && this.y + 70 >= nsvs[i].y) || (this.segment.dir === 2 && this.x + 70 >= nsvs[i].x) || (this.segment.dir === 3 && this.y - 70 <= nsvs[i].y) || (this.segment.dir === 4 && this.x - 70 <= nsvs[i].x)) {
 							this.hasToStop = true;
 							break;
 						}
 					}
-					if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x - 2, nsvs[i].segment.begin.y - 2) && !(nsvs[i].segment.dir === this.segment.dir)) {
+					else if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x + xppcorr, nsvs[i].segment.begin.y + yppcorr) && !(nsvs[i].segment.dir === this.segment.dir)) {
 						this.hasToStop = true;
 						break;
 					}

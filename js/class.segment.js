@@ -75,7 +75,7 @@ class Segment {
 				break;
 			}
 		}
-		if(canSpawn && x > -1) {
+		if(canSpawn && x > 3) {
 			var v = new Vehicle(this.canvas, this);
 			this.canvas.vehicles.push(v);
 		}

@@ -67,23 +67,21 @@ class Segment {
 			}
 		}
 
-		for(let i in others) {
-			let oc = others[i].connected;
-			if(oc[3] || oc[3] === 0) {
-				// Do stuff based on this connection
-				switch(oc[3]) {
-					case 1:
-						this.connected[3] = 2;
-						break;
-					case 2:
-						this.connected[3] = 1;
-						break;
-					default:
-						
-				}
+		var isFirst = false;
+		for(let i = 0; i < others.length; i++) {
+			if(others[i].connected[3]) { break; }
+		}
+		isFirst = true;
+
+		if(isFirst) {
+			this.connected[3] = Math.floor(Math.random() * 3);
+		}
+		else {
+			if(others[0].connected[3] === 2 && others[1].connected[3] === 2) {
+				this.connected[3] = 1;
 			}
-			else {
-				this.connected[3] = Math.floor(Math.random() * 3);
+			else if(others[0].connected[3] === 1 || others[1].connected[3] === 1) {
+				this.connected[3] = 2;
 			}
 		}
 	}

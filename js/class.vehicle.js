@@ -144,7 +144,7 @@ class Vehicle {
 		}
 
 		// Check for traffic jams
-		var hasToStop = false;
+		this.hasToStop = false;
 		let vs = [];
 		let cvs = this.canvas.vehicles;
 		let maxX = this.x; let maxY = this.y;
@@ -160,13 +160,13 @@ class Vehicle {
 
 		for(let i in vs) {
 			if(this.y !== maxY && this.segment.dir === 1 && this.y + 70 >= vs[i].y && this.y < vs[i].y) {
-				hasToStop = true;
+				this.hasToStop = true;
 			} else if(this.x !== maxX && this.segment.dir === 2 && this.x + 70 >= vs[i].x && this.x < vs[i].x) {
-				hasToStop = true;
+				this.hasToStop = true;
 			} else if(this.y !== minY && this.segment.dir === 3 && this.y - 70 <= vs[i].y && this.y > vs[i].y) {
-				hasToStop = true;
+				this.hasToStop = true;
 			} else if(this.x !== minX && this.segment.dir === 4 && this.x - 70 <= vs[i].x && this.x > vs[i].x) {
-				hasToStop = true;
+				this.hasToStop = true;
 			}
 		} // for i
 		if((this.x === maxX && this.y === maxY && corr > 0) || (this.x === minX && this.y === minY && corr < 0)) {
@@ -187,14 +187,14 @@ class Vehicle {
 				}
 				for(let i in nsvs) {
 					if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x, nsvs[i].segment.begin.y)) {
-						hasToStop = true;
+						this.hasToStop = true;
 						break;
 					}
 				}
 			} // if isPastPoint
 		} // else if
 
-		if(hasToStop) {
+		if(this.hasToStop) {
 			this.x -= (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);
 			this.y -= (this.segment.dy ? this.segment.speed / 25 : 0) * (this.segment.dir === 1 ? 1 : -1);
 		}

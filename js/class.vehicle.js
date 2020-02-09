@@ -49,13 +49,18 @@ class Vehicle {
 
 	applyTrafficRules() {
 		let giveway = false;
+		let prio = true;
 		let tsc = this.segment.connected[3];
 
 		if(tsc === 0 || tsc === 2) {
-			giveway = true;
+			prio = false;
 		} // if
-		else if(tsc === 1) {
+
+		if(tsc === 1) {
 			giveway = false;
+		}
+		else if(tsc === 2) {
+			giveway = true;
 		}
 
 		else { // else (if no traffic sign is present)

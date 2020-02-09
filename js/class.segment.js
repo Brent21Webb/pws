@@ -61,7 +61,7 @@ class Segment {
 
 	spawn(x) {
 		// if(x && !this.canvas.vehicles[0] && (this.ID === 1 || this.ID === 1)) {
-		if(x > 3) {
+		if(x >= 0) {
 			var v = new Vehicle(this.canvas, this);
 			this.canvas.vehicles.push(v);
 		}

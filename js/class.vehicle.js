@@ -179,7 +179,7 @@ class Vehicle {
 				this.hasToStop = true;
 			}
 		} // for i
-		if((this.x === maxX && this.y === maxY && corr > 0) || (this.x === minX && this.y === minY && corr < 0)) {
+		if((this.x === maxX && this.y === maxY) || (this.x === minX && this.y === minY)) {
 			if(this.isPastPoint(ex - 2 * corr, ey - 2 * corr)) {
 				let nextInRoute = this.route[this.nav];
 				let nextSegment = this.canvas.segments[this.segment.connected[1][nextInRoute] - 1];
@@ -196,7 +196,7 @@ class Vehicle {
 					}
 				}
 				for(let i in nsvs) {
-					if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x, nsvs[i].segment.begin.y)) {
+					if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x - 0.5, nsvs[i].segment.begin.y - 0.5) && !(nsvs[i].segment.dir === this.segment.dir) && (this.segment.connected[0] === 0 || this.segment.connected[0] === 6)) {
 						this.hasToStop = true;
 						break;
 					}

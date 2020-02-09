@@ -81,7 +81,7 @@ class Segment {
 		}
 
 		if(isFirst) {
-			this.connected[3] = Math.floor(Math.random() * 3);
+			this.connected[3] = Math.floor(Math.random() * 4);
 		}
 		else {
 			if(others[0].connected[3] === 2) {
@@ -97,6 +97,10 @@ class Segment {
 			}
 			else if(others[0].connected[3] === 0 || (others[1] && others[1].connected[3] === 0)) {
 				this.connected[3] = undefined;
+			}
+			else if(others[0].connected[3] === 3) {
+				this.connected[3] = 0;
+				others[0].connected[3] = undefined;
 			}
 		}
 	}

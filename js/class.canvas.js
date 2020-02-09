@@ -120,7 +120,7 @@ class Canvas {
 		this.draw(true);
 
 		// Request new update
-		requestAnimationFrame(() => this.update());
+		if(!pause) { requestAnimationFrame(() => this.update()); }
 	}
 
 

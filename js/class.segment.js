@@ -61,12 +61,23 @@ class Segment {
 
 	spawn(x) {
 		// if(x && !this.canvas.vehicles[0] && (this.ID === 1 || this.ID === 1)) {
-		if(x > 3) {
+		var cvs = this.canvas.vehicles;
+		var vs = [];
+		var canSpawn = true;
+		for(let i in cvs) {
+			if(cvs[i].segment.ID === this.ID) {
+				vs.push(cvs[i]);
+			}
+		}
+		for(let i in vs) {
+			if(!vs[i].isPastPoint(this.begin.x + 2, this.begin.y + 2)) {
+				canSpawn = false;
+				break;
+			}
+		}
+		if(canSpawn && x > -1) {
 			var v = new Vehicle(this.canvas, this);
 			this.canvas.vehicles.push(v);
-		}
-		else {
-			// console.log("No spawn");
 		}
 	}
 

@@ -84,8 +84,13 @@ class Segment {
 			this.connected[3] = Math.floor(Math.random() * 3);
 		}
 		else {
-			if(others[0].connected[3] === 2 && others[1] && others[1].connected[3] === 2) {
-				this.connected[3] = 1;
+			if(others[0].connected[3] === 2) {
+				if(!others[1] || others[1].connected[3] !== 1) {
+					this.connected[3] = 1;
+				} else {
+					this.connected[3] = 2;
+				}
+				// console.log("SOMETHING'S RED");
 			}
 			else if(others[0].connected[3] === 1 || (others[1] && others[1].connected[3] === 1)) {
 				this.connected[3] = 2;

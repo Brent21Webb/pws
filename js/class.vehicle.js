@@ -49,9 +49,14 @@ class Vehicle {
 
 	applyTrafficRules() {
 		let giveway = false;
-		if(this.segment.connected[2]) { // If a traffic sign is present
+		let tsc = this.segment.connected[3];
 
+		if(tsc === 0 || tsc === 2) {
+			giveway = true;
 		} // if
+		else if(tsc === 1) {
+			giveway = false;
+		}
 
 		else { // else (if no traffic sign is present)
 			let dirToFind = (this.segment.dir + 1 <= 4 ? this.segment.dir + 1 : 1);

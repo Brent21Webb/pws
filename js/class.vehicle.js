@@ -172,6 +172,31 @@ class Vehicle {
 				}
 			} // for i
 		} // if not max
+		else if((this.x === maxX && this.y === maxY) || (this.x === minX && this.y === minY)) {
+			if(this.isPastPoint(ex - 2 * corr, ey - 2 * corr)) {
+				let nextInRoute = this.route[this.nav];
+				let nextSegment = this.canvas.segments[this.segment.connected[1][nextInRoute] - 1];
+
+				if(!nextSegment) {
+					return;
+				}
+
+				let nsvs = [];
+				let cvs = this.canvas.vehicles;
+				for(let i in cvs) {
+					if(cvs[i].segment.ID === nextSegment.ID) {
+						nsvs.push(cvs[i]);
+					}
+				}
+				for(let i in nsvs) {
+					if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x + 2 * corr, nsvs[i].segment.begin.y + 2 * corr)) {
+						hasToStop = true;
+						break;
+					}
+				}
+			} // if isPastPoint
+		} // else if
+
 		if(hasToStop) {
 			this.x -= (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);
 			this.y -= (this.segment.dy ? this.segment.speed / 25 : 0) * (this.segment.dir === 1 ? 1 : -1);

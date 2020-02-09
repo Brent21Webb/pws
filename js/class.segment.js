@@ -68,21 +68,23 @@ class Segment {
 		}
 		if(!others) { return; }
 
-		var isFirst = false;
+		var isFirst = true;
 		for(let i = 0; i < others.length; i++) {
-			if(others[i].connected[3]) { break; }
+			if(others[i].connected[3] || others[i].connected[3] === 0) { isFirst = false; }
 		}
-		isFirst = true;
 
 		if(isFirst) {
 			this.connected[3] = Math.floor(Math.random() * 3);
 		}
 		else {
-			if(others[0].connected[3] === 2 && others[1].connected[3] === 2) {
+			if(others[0].connected[3] === 2 && others[1] && others[1].connected[3] === 2) {
 				this.connected[3] = 1;
 			}
-			else if(others[0].connected[3] === 1 || others[1].connected[3] === 1) {
+			else if(others[0].connected[3] === 1 || (others[1] && others[1].connected[3] === 1)) {
 				this.connected[3] = 2;
+			}
+			else if(others[0].connected[3] === 0 || (others[1] && others[1].connected[3] === 0)) {
+				this.connected[3] = undefined;
 			}
 		}
 	}

@@ -212,7 +212,7 @@ class Vehicle {
 						}
 					}
 
-					else if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x + xppcorr, nsvs[i].segment.begin.y + yppcorr) && !(nsvs[i].segment.dir === this.segment.dir)) { // if on different direction and vehicle not past
+					else if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x + xppcorr, nsvs[i].segment.begin.y + yppcorr) && !(nsvs[i].segment.dir === this.segment.dir) && this.segment.connected[3] !== 1) { // if on different direction and vehicle not past
 						this.hasToStop = true;
 						break;
 					}

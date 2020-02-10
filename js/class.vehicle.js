@@ -214,9 +214,9 @@ class Vehicle {
 						this.hasToStop = true;
 						break;
 					}
-				}
+				} // for i 
 			} // if isPastPoint
-		} // else if
+		} // if first/last vehicle
 
 		if(this.hasToStop) {
 			this.x -= (this.segment.dx ? this.segment.speed / 25 : 0) * (this.segment.dir === 2 ? 1 : -1);

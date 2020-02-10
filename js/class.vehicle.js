@@ -135,7 +135,7 @@ class Vehicle {
 			// Adjust vehicle up/down/right/left to drive in the center of the road, based on the calculations made before the segment changed
 			this.x += dx + forcedDX;
 			this.y += dy + forcedDY;
-		}
+		} // if isPastPoint()
 
 		else if((this.segment.connected[0] === 0 || this.segment.connected[0] === 6) && this.isPastPoint(ex - 3 * corr, ey - 3 * corr) && !this.isPastPoint(ex - 2 * corr, ey - 2 * corr)) {
 			this.isCloseToCrossing = true;
@@ -160,7 +160,6 @@ class Vehicle {
 		let maxX = this.x; let maxY = this.y;
 		let minX = this.x; let minY = this.y;
 		for(let i in cvs) {
-			// html.innerHTML += "<br>ID: " + cvs[i].ID + " --- x: " + cvs[i].x + " --- y: " + cvs[i].y;
 			if(cvs[i].segment.ID === this.segment.ID && cvs[i].ID !== this.ID) {
 				maxX = Math.max(maxX, cvs[i].x); minX = Math.min(minX, cvs[i].x);
 				maxY = Math.max(maxY, cvs[i].y); minY = Math.min(minX, cvs[i].y);
@@ -182,39 +181,56 @@ class Vehicle {
 		if(((this.x === maxX || this.x === minX) && this.segment.dir % 2) || ((this.y === maxY || this.y === minY) && !(this.segment.dir % 2))) {
 			if(this.isPastPoint(ex - 2 * corr, ey - 2 * corr)) {
 				let nextInRoute = this.route[this.nav];
+				let otherRoute = 1 - this.route[this.nav];
 				let nextSegment = this.canvas.segments[this.segment.connected[1][nextInRoute] - 1];
+				let otherSegment = this.canvas.segments[this.segment.connected[1][otherRoute] - 1];
 
 				if(!nextSegment) {
 					return;
 				}
 
-				let nsvs = [];
+				let nsvs = []; // nextsegment vehicles
+				let osvs = []; // othersegment vehicles
 				let cvs = this.canvas.vehicles;
 				for(let i in cvs) {
 					if(cvs[i].segment.ID === nextSegment.ID) {
 						nsvs.push(cvs[i]);
 					}
+					else if(otherSegment && cvs[i].segment.ID === otherSegment.ID) {
+						// console.log("Found other segment vehicle ");
+						osvs.push(cvs[i]);
+					}
 				}
-				if(this.ID === 3 + (11 * 3)) {
-					var t = (nsvs[3] ? nsvs[3] : undefined);
-					// console.log(t);
-					// console.log(t.segment.begin);
-					// console.log(t.isPastPoint(t.segment.begin.x - 2, t.segment.begin.y - 0));
+
+				if(this.ID === 3 + (0 * 3)) {
+					var t = (osvs[0] ? osvs[0] : undefined);
+					if(otherSegment) console.log(otherSegment.ID);
 				}
+
 				for(let i in nsvs) {
 					let xppcorr = (nsvs[i].segment.dir === 4 ? -2 : 0);
 					let yppcorr = (nsvs[i].segment.dir === 1 ? 0 : -2);
-					if(nsvs[i].segment.dir === this.segment.dir) {
+					if(nsvs[i].segment.dir === this.segment.dir) { // if on same direction and next vehicle is close enough to me
 						if((this.segment.dir === 1 && this.y + 70 >= nsvs[i].y) || (this.segment.dir === 2 && this.x + 70 >= nsvs[i].x) || (this.segment.dir === 3 && this.y - 70 <= nsvs[i].y) || (this.segment.dir === 4 && this.x - 70 <= nsvs[i].x)) {
 							this.hasToStop = true;
 							break;
 						}
 					}
-					else if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x + xppcorr, nsvs[i].segment.begin.y + yppcorr) && !(nsvs[i].segment.dir === this.segment.dir)) {
+
+					else if(!nsvs[i].isPastPoint(nsvs[i].segment.begin.x + xppcorr, nsvs[i].segment.begin.y + yppcorr) && !(nsvs[i].segment.dir === this.segment.dir)) { // if on different direction and vehicle not past
 						this.hasToStop = true;
 						break;
 					}
-				} // for i 
+				} // for i
+
+				for(var i = 0; i < osvs.length; i++) {
+					let xppcorr = (osvs[i].segment.dir === 4 ? -2 : 0);
+					let yppcorr = (osvs[i].segment.dir === 1 ? 0 : -2);
+					if(osvs[i].isPastPoint(osvs[i].segment.begin.x + xppcorr, osvs[i].segment.begin.y + yppcorr)) {
+						this.hasToStop = true;
+						break;
+					}
+				}
 			} // if isPastPoint
 		} // if first/last vehicle
 

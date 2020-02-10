@@ -202,11 +202,6 @@ class Vehicle {
 					}
 				}
 
-				if(this.ID === 3 + (0 * 3)) {
-					var t = (osvs[0] ? osvs[0] : undefined);
-					if(otherSegment) console.log(otherSegment.ID);
-				}
-
 				for(let i in nsvs) {
 					let xppcorr = (nsvs[i].segment.dir === 4 ? -2 : 0);
 					let yppcorr = (nsvs[i].segment.dir === 1 ? 0 : -2);
@@ -226,7 +221,7 @@ class Vehicle {
 				for(var i = 0; i < osvs.length; i++) {
 					let xppcorr = (osvs[i].segment.dir === 4 ? -2 : 0);
 					let yppcorr = (osvs[i].segment.dir === 1 ? 0 : -2);
-					if(osvs[i].isPastPoint(osvs[i].segment.begin.x + xppcorr, osvs[i].segment.begin.y + yppcorr)) {
+					if(!osvs[i].isPastPoint(osvs[i].segment.begin.x + xppcorr, osvs[i].segment.begin.y + yppcorr)) {
 						this.hasToStop = true;
 						break;
 					}

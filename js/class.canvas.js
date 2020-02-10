@@ -210,12 +210,6 @@ class Canvas {
 
 
 
-// Canvas.clicked = function(x, y, canvas) {
-// 	var newX = Math.round(x / 40);   newX = (newX >= 20 ? 19 : newX) || 1;
-// 	var newY = Math.round(y / 40);   newY = (newY >= 20 ? 19 : newY) || 1;
-// } // clicked
-
-
 
 
 

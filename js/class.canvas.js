@@ -13,6 +13,7 @@ class Canvas {
 		this.PASSED_VEHICLES = 0;
 
 		this.lastSpawn = undefined;
+		this.lastLightSwitch = undefined;
 
 		this.__init();
 	} // constructor
@@ -24,7 +25,7 @@ class Canvas {
 		this.ctx.height = this.canvas.height = this.height;
 		this.ctx.translate(0.5, 0.5);
 
-		this.lastSpawn = new Date();
+		this.lastSpawn = this.lastLightSwitch = new Date();
 		this.update();
 	} // __init()
 
@@ -111,6 +112,41 @@ class Canvas {
 				this.spawners[i].spawn(Math.floor(Math.random() * 10));
 			}
 		}
+		if(timeDiff(this.lastLightSwitch, d) > 3) {
+			this.lastLightSwitch = d;
+			var crossings = {};
+			// Find crossings
+			for(var i in this.segments) {
+				if(this.segments[i].connected[2]) {
+					var c = crossings[this.segments[i].connected[2]];
+					if(c) { c.push(this.segments[i]); }
+					else { crossings[this.segments[i].connected[2]] = [this.segments[i]]; }
+				}
+			}
+
+			// For each crossing...
+			for(let i in crossings) {
+				// If it's a traffic light crossing, continue
+				var c = crossings[i];
+				if(!(c[0].connected[3] === 1 || c[0].connected[3] === 2)) {
+					continue;
+				}
+				// Find which one has the green traffic light
+				var g = undefined;
+				for(let j in c) {
+					if(c[j].connected[3] === 1) {
+						g = parseInt(j);
+						break;
+					}
+				}
+				// Make the one after the green one green
+				var nextG = ((g + 1) >= c.length ? 0 : (g + 1));
+				for(let j in c) {
+					c[j].connected[3] = 2;
+					if(nextG == j) { c[j].connected[3] = 1; }
+				}
+			} // for i in crossing
+		} // if lightswitch
 
 		// Update all vehicles
 		for(var i in this.vehicles) {

@@ -14,6 +14,7 @@ class Canvas {
 
 		this.lastSpawn = undefined;
 		this.lastLightSwitch = undefined;
+		this.runtime = undefined;
 
 		this.__init();
 	} // constructor
@@ -25,7 +26,7 @@ class Canvas {
 		this.ctx.height = this.canvas.height = this.height;
 		this.ctx.translate(0.5, 0.5);
 
-		this.lastSpawn = this.lastLightSwitch = new Date();
+		this.lastSpawn = this.lastLightSwitch = this.runtime = new Date();
 		this.update();
 	} // __init()
 
@@ -90,19 +91,6 @@ class Canvas {
 
 
 	update() {
-		// html.innerHTML = "";
-		// for(var i in this.vehicles) {
-		// 	var vl = this.vehicles[i];
-		// 	html.innerHTML += "Vehicle ID: " + vl.ID;
-		// 	html.innerHTML += "<br>Segment ID: " + vl.segment.ID;
-		// 	html.innerHTML += "<br>Segment begin: " + vl.segment.begin.x + "x" + vl.segment.begin.y;
-		// 	html.innerHTML += "<br>Segment end: " + vl.segment.end.x + "x" + vl.segment.end.y + " (" + (vl.segment.end.x * 30) + "x" + (vl.segment.end.y * 30) + ")";
-		// 	html.innerHTML += "<br>Vehicle position: " + vl.x + "x" + vl.y;
-		// 	html.innerHTML += "<br>Is close: " + vl.isCloseToCrossing;
-		// 	html.innerHTML += "<br>Is on: " + vl.isOnCrossing;
-		// 	html.innerHTML += "<br><br><br>";
-		// }
-
 		// Check if spawning is necessary
 		var d = new Date();
 		if(timeDiff(this.lastSpawn, d) > 1) {
@@ -112,7 +100,8 @@ class Canvas {
 				this.spawners[i].spawn(Math.floor(Math.random() * 10));
 			}
 		}
-		if(timeDiff(this.lastLightSwitch, d) > 3) {
+		// Check if traffic light switch is necessary
+		if(timeDiff(this.lastLightSwitch, d) > 5) {
 			this.lastLightSwitch = d;
 			var crossings = {};
 			// Find crossings
@@ -147,6 +136,12 @@ class Canvas {
 				}
 			} // for i in crossing
 		} // if lightswitch
+
+		// Check if a minute has passed
+		if(timeDiff(this.runtime, d) > 60) {
+			html.innerHTML = "RESULT: " + this.PASSED_VEHICLES;
+			pause = true;
+		}
 
 		// Update all vehicles
 		for(var i in this.vehicles) {
